@@ -12,7 +12,7 @@
 2. Création et suppression des templates d'instances de groupes Load-Balancés et Autoscalés
 3. Allocation de ressources élastique (Elastic Resources Allocation)
 
-## recommadantions de gestion de machines virtuelles
+## Recommadantions de gestion de VMs
 
 ## Résumé
 

@@ -1,4 +1,4 @@
-# Les services Google Cloud Computing (GCE) de la Plateforme Google Cloud (GCP)
+# Services Google Cloud Computing de la Plateforme Google Cloud
 
 ## Composants de calcul de la plateforme Google Cloud (GCP)
 

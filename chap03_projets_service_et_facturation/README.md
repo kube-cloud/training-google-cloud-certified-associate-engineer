@@ -1,6 +1,6 @@
 # Projets, Services et Facturation
 
-## Modèle d'organisation des projets et des comptes par Google Cloud Platform (GCP)
+## Organisation des projets et des comptes par Google Cloud Platform (GCP)
 
 1. Hiérarchie des ressources GCP
 2. Politiques d'une Organisation

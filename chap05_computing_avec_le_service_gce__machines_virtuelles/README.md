@@ -1,4 +1,4 @@
-# Les machines virtuelles Google Compute Engine
+# Machines virtuelles Google Compute Engine
 
 ## Création et configuration des machines virtuelle via la Console Web
 
@@ -20,7 +20,7 @@
 3. Monitorer une machine virtuelle
 4. Coût d'une machine virtuelle
 
-## Recommandantions pour la plannification, le déploiement et la gestion de machines virtuelles
+## Recommandantions pour la plannification, le déploiement et la gestion de VMs
 
 ## Résumé
 
