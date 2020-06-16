@@ -1,0 +1,5 @@
+# MacOS Hidden files
+**.DS_Store
+
+# VsCode Settings
+**.vscode
