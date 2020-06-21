@@ -92,7 +92,7 @@
 
 16. Comment les fournisseurs de cloud offrent-ils l'allocation élastique de ressources ?
     1. En retirant des ressources aux utilisateurs moins prioritaires pour les affecter aux plus prioritaires
-    2. __***Grâces à Edes ressources (Calcul, Stockage, Réseau) étendues et à la possibilité de réaffectation rapide de ressources entre utilisateurs.***__
+    2. __***Grâces à des ressources (Calcul, Stockage, Réseau) étendues et à la possibilité de réaffectation rapide de ressources entre utilisateurs.***__
     3. Pour facturer plus
     4. Ils n'offrent pas d'allocation elastiques de ressources
 
