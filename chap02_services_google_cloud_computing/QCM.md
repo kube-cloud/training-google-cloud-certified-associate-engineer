@@ -66,7 +66,7 @@
     3. 2 grandes Machines Virtuelle, avec une en Lecture-seule
     4. Démarrage avec une petite machine virtuelle et augmentation de ses ressources en fonction de la charge
 
-12. Quel type d'option d'administration pouvez-vous effectuer sur une machine virtuelle que vous avez créee ?
+12. Quel type d'op´tation d'administration pouvez-vous effectuer sur une machine virtuelle que vous avez créee ?
     1. Configuration du système de fichier
     2. Patch du système d'exploitation
     3. Modification des permissions sur les fichiers et les répertoires
@@ -90,9 +90,9 @@
     3. Ils peuvent être désynchronisés par rapport à la source de données originale
     4. __***`Ils réduisent la latence du fait de meilleures performaces d'accès que les disque SSD ou HDD`***__
 
-16. Comment les fournisseurs de cloud offrent-ils l'allocation élastique de ressources ?
-    1. En retirant des ressources aux utilisateurs moins prioritaires pour les affecter aux plus prioritaires
-    2. __***Grâces à Edes ressources (Calcul, Stockage, Réseau) étendues et à la possibilité de réaffectation rapide de ressources entre utilisateurs.***__
+16. Pourquoi les fournisseurs de cloud offrent-ils l'allocation élastique de ressources ?
+    1. Pour pouvoir retirer des ressources aux utilisateur moins prioritaires et les affecter aux plus prioritaires
+    2. Les ressour_______________________
     3. Pour facturer plus
     4. Ils n'offrent pas d'allocation elastiques de ressources
 
