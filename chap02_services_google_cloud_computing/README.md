@@ -55,6 +55,7 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
   * etc..
 
   __***En gros c'est un modèle dans lequel le client assure lui-même la gestion de ses VMs.***__
+  
   __***Les services IaaS de GCP sont :***__
   * `Google Compute Engine (GCE)`
 
