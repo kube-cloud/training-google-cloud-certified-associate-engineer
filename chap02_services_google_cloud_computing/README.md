@@ -55,7 +55,7 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
   * etc..
 
   __***En gros c'est un modèle dans lequel le client assure lui-même la gestion de ses VMs.***__
-  
+
   __***Les services IaaS de GCP sont :***__
   * `Google Compute Engine (GCE)`
 
@@ -68,6 +68,7 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
   * `Google Cloud Functions`
 
 * Le modèle `PaaS géré par le Client`, c'est un modèle dans lequel le client lui-même instancie et administre lui-même son environnement de gestion de conteneurs applicatifs (Docker/RKT).
+
   __***Les services PaaS Client de GCP sont :***__
   * `Google Kubernetes Engine (GKE)`
 
