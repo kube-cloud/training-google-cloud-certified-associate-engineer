@@ -119,4 +119,3 @@
     2. __***`Ils sont Serverless`***__
     3. Ils nécessitent une configuration minimale de 3 VMs
     4. Ils peuvent exécuter des applications écrites en `Go`
-
