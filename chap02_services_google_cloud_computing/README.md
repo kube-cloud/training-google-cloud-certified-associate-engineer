@@ -85,7 +85,7 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
     * Les VMs sont des abstraction des machines physiques, des programmes qui émulent les machine physiques et fournissent CPU, Mémoire, Stockage et d'autres services
     * Les VMs sont crées et exécutées par des hyperviseurs, qui sont des programmes d'exploitation des ressources physiques (comme des OS), et dont le seul objectif est de permettre de créer et gérer des VMs
     * Pour mettre en oeuvre le service `GCE`, `GCP` utilise un hyerviseur de type 1, basé sur `KVM (Kernel Virtual Machine)`
-    * `KVM (Kernel Virtual Machine)` est une technologie de virtualisation intégrée au noyau Linux depuis la version `2.6.20`. `KVM` permet de transformer `Linux` en hyperviseur permettant ainsi à la machine hôte d'exécuter plusieurs environnements isolés (les machine virtuelles)
+    * `KVM (Kernel Virtual Machine)` est une technologie de virtualisation intégrée au noyau Linux depuis la version `2.6.20` (basé sur les package `libvirt`, `quemu-kvm`). `KVM` permet de transformer `Linux` en hyperviseur permettant ainsi à la machine hôte d'exécuter plusieurs environnements isolés (les machine virtuelles)
     * Un hyperviseur (comme `KVM`) permet d'exécuter plusieurs instances de systèmes d'exploitation appelé `Système invité`.
     * Dans le cas de `GCE`, `KVM` joue le rôle de `Système d'exploitation`, et met à disposition un programme d'`Hypervision` permettant de gérer des VMs.
 
@@ -101,13 +101,35 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
         * Les Tags réseau
         * L'interface réseau
         * Les règles de parefeu de bases (http/https)
-        * Les cñlés SSH autorisés à se connecter à la VM
+        * Les clés SSH autorisées à se connecter à la VM
         * Les scripts à exécuter au démarrage de la VM
         * La préemptibilité de la machine
             * Une machine préemptible coûtera beaucoup moins cher (80% moins cher) qu'une machine normale, mais la contrepartie étant qu'il n'ya aucune garantie de disponibilité. Elle peut être arrêtée à tout moment par GCP dépendament des besoins de la plateforme. En général, elle sera arrêtée après 24H d'exécution continue
 
 2. `Google Kubernetes Engine (GKE)`
+
+    * `Google Kubernetes Engine` est un service permettant de créer un Cluster `Kubernetes` managé et optimisé par Google pour l'exploitation de la puissance du cloud GCP.
+    * `Google Kubernetes Engine` permet au utilisateurs de décrire entre autres la puissance de calcul, de stockage, de mémoire qui sera embarquée dans le cluster. `GKE` se chargera alors de provisionner ces ressources afin d'avoir un cluster conforme à la description.
+    * `Google Kubernetes Engine` permet aussi de rajouter facilement des ressources au Cluster, de manière manuelle ou automatique (via un `Autoscaler`).
+    * Le cluster `Kubernetes` ainsi créee va
+        * Monitorer l'état de santé des ressources serveurs dont l a la charge
+        * Monitorer la consommation des ressources de chaque serveur
+        * Gérer des problèmes de base tel que des noeuds qui tombent en panne
+        * Gérer des stratégie de mise à l'échelle (`Scaling`)
+    * Ce service permet aux utilisateur d'exécuter des application conteneurisées sur un Cluster de Serveurs
+    * Les conteneurs est un cloisonnement de ressources (calcul, stockage, réseau) permettant d'exécuter un ensemble de processus de manière isolée.
+    * Les conteneurs peuvent être comparés à des VMs uniquement du point de vue de l'solation de ressources.
+    * Contrairement aux VMs qui s'exécutent sur un `Hyperviseur`, lui-même installé au-dessus d'un `Système d'exploitation`, les conteneurs quant à eux ne nécessitent pas d'hyperviseur.
+    * Dans l'approche conteneur, il n'ya aucun `Hyperviseur` et aucun système d'exploitation `invité`, les conteneurs s'exécutent directement le système d'exploitation `Hôte` qui assure le cloisonnement de processus et de ressources grâce à un `Gestionnaire de conteneurs`
+
+    ![Instances de Conteneurs dans une machine Physique](./container_instances_in_physical_server.png)
+
 3. `Google AppEngine`
+
+
+
+
+
 4. `Google Cloud Functions`
 
 
