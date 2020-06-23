@@ -17,14 +17,14 @@ l'objectif de ce chapitre est de présenter et de décrire les cas d'usage des s
     * Google Cloud Storage for Firebase
     * Google Cloud Filestore
     * Google Databases
-    * Google Vloud SQL
+    * Google Cloud SQL
     * Google Cloud bigTable
     * Google Cloud Spanner
     * Google Cloud Datastore
     * Google Cloud Meorystore
     * Google Firestore
 3. __***`Composants réseau`***__
-    * Google Virtual private Cloud
+    * Google Virtual Private Cloud (VPC)
     * Google Cloud Load Balacing
     * Google Cloud Armor
     * Coogle Cloud CDN
@@ -126,17 +126,81 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
 
 3. `Google AppEngine`
 
-
-
-
+    * `App Engine` est l'offre `PaaS (Platform As A Service)` de `GCP`.
+    * `App Engine` fournit à ses clients une plateforme `Serverless` de déploiement et d'exécution d'application
+    * `App Engine` permet aux développeurs et administrateurs, de déployer et exécuter des applications (`Java`, `Python`, `C#`, `Go`, `PHP`, `NodeJS`, etc...) sans avoir à créer et configurer des VMs, des Clusters Kubernetes ou encore du Stockage, ou du Réseau.
+    * `App Engine` va gérer de manière transparente, toute les problématique d'infrastructure de calcul, de stockage et de réseau sous-jacentes au déploiement des applications.
+    * `App Engine` est très adapté pour le déploiement de back-end pour application web ou mobile.
+    * `App Engine` offre deux types d'environnement de déploiement
+        * `Standard`, votre application est exécutée dans un environnement préconfiguré pour un langage spécifique. il est indiqué pour l'exécution d'applications compatible avec un des langages supportés et qui ne nécessitent aucun package système spécifique ou autre logiciels dépendants.
+        * `Flexible`, permet d'exécuter des conteneurs Docker. Il est indiqué pour des applications nécessitant des librairies et initialisation particulières. Il offre beaucoup plus de possibilité de personnalisation et permet notament de gérer des processus et d'écrire sur des disque locaux.
 
 4. `Google Cloud Functions`
+
+    * `Google Cloud Functions` est un environnement d'exécution allégé, adapté pour l'exécution de callbacks traitement d'évènements tels que :
+        * L'upload d'un fichier dans un Bucket `Google Cloud Storage`
+        * L'écriture d'un message dans une file ou un topic
+    * Le code exécuté par `Google Cloud Functions` doit être de courte durée
+    * Pour l'exécution de code longue durée, il vaut mieux choisir des options telles que :
+        * `Google Compute Engine`
+        * `Google Kubernetes Engine`
+        * `Google App Engine`
+    * `Google Cloud Functions` est surtout utilisé pour invoquer d'autre services (Une API applicative, un service GCP, etc...) en réaction à un évènement spécifique.
+    * `Google Cloud Functions` est `Serverless` tout comme `Google Cloud Functions`
 
 
 ## ***Composants de stockage de la plateforme Google Cloud (GCP)***
 
-1. Ressources de stockage (Storage Resources)
-2. Base de données (Databases)
+Certaines applications ou services ont besoin de stocker et accéder aux données stockées de manière ultra-rapide, tandis que d'autres on besoin de stocker de gros volumes de données en tolérant des latences dans le traitement.
+
+GCP met à disposition un ensemble de ressources et services de stockage dans le bit d'accompagner ces besoins d'application Clientes.
+
+### ***Ressources de stockage (Storage Resources)***
+
+1. `Google Cloud Storage`
+
+    * `Google Cloud Storage` est Service de stockage objet proposé par GCP
+    * `Google Cloud Storage` organise le stockage des objets dans les `Buckets`
+    * Un `Objet` représente un fichier ou un `BLOB (Binary Large OBject)`. C'est une unité indivisible, qui est lu ou écrite de manière unitaire en une opération
+    * `Google Cloud Storage` n'est pas du tout un système de fichier (comme NFX, EXT4, etc...)
+    * `Google Cloud Storage` est uniquement un service permettant de recevoir, stocker et renvoyer des fichier ou plus généralement des objets depuis un système de fichier distribué
+    * Les `Buckets` de `Cloud Storage` sont complètement indépendants d'une quelconque VM, il ne peuvent pas rattachés à une VM comme pourrait l'être un disque persistant.
+    * Les `Buckets` de `Cloud Storage` sont accessible d'une VM, comme de n'importe quel équipement disposant de l'URL du `Bucket` ainsi que des droits d'accès adéquats
+    * Chaque objet stocké dans un `Bucket` est identifiable de manière unique par un URL.
+        * Par exemple, si nous avons un document `content.pdf`, associé au `Bucket` `document-exam-guide`, il peut être identifié par l'URL : ***`https://storage.cloud.google.com/document-exam-guide/content.pdf`***
+    * Les utilisateurs et applications peuvent se voir attribuer, via le service de gestion des droits (IAM), des autorisations en lecture/écriture pour pouvoir accéder objets contenus dans un `Bucket`
+    * `Google Cloud Storage` est très recommandé pour le stockage et l'accès aux fichiers volumineux, qui sont géré de manière unitaire,.
+        * `Les archives`, qui sont stockées et récupérées unitairement pour être traité
+        * `Les images`, qui sont enregistrées et récupérées en une fois de manière unitaire, entière. il est très rare et très spécifique de rechercher un partie d'une image)
+        * etc...
+    * En général `Google Cloud Storage` sera l'option à considérer, si vous avez besoin de stocker des objets indivisible, de manière indépendante d'un serveur
+    * Il existe plusieurs classe de `Cloud Storage`. Chaque classe de stockage représente en réalité une offre permettant de choisir l'emplacement et la (géo-)réplication des données de vos `Buckets`.
+        * `Régional`
+            * les données de vos `Buckets` sont stockée dans une seule région (par exemple `Londres`)
+            * les temps d'accès sont optimisés pour les utilisateurs ou services déployés dans la même région
+        * `Bi-Régional`
+            * Les données de vos `Buckets` sont redondés dans deux régions (Par exemple Finlande et des Pays-Bas)
+            * Les performances d'accès ssuivent les même règles que le stockage régional
+            * À utiliser lorsqu'on souhaite atteindre les performances du stockage régional avec en bonus la géo-redondance des données.
+        * `Multi-régional`
+            * Les données de vos `Buckets` sont géo-redondés dans un secteur géographique de très grande étendue (Par exemple Etats-Unis) qui coomporte plusieurs régions
+            * Les données de vos `Buckets` sont géo-redondés dans toutes les régions du secteur choisi
+            * À utiliser lorsqu'on souhaite atteindre des utilisateurs qui sont en dehors du réseau Google, réparties dans plusieurs régions ou lorsqu'on veut profiter d'un très grand niveau de redondance
+    * Il es fortement recommandé de stocker ses données dans des emplacements qui regroupent la grande majorité de nos utilisateurs.
+
+
+2. `Google Persistent Disk`
+3. `Google Cloud Storage for Firebase`
+4. `Google Cloud Filestore`
+
+### ***Base de données (Databases)***
+
+1. `Google Cloud SQL`
+2. `Google Cloud Bigtable`
+3. `Google Cloud Spanner`
+4. `Google Cloud Datastore`
+5. `Google Cloud Memorystore`
+6. `Google Cloud Firestore`
 
 ## ***Composants de networking de la plateforme Google Cloud (GCP)***
 
