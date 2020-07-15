@@ -148,7 +148,6 @@ Les ressource de calcul de la plateforme GCP offrent au client des services suiv
     * `Google Cloud Functions` est surtout utilisé pour invoquer d'autre services (Une API applicative, un service GCP, etc...) en réaction à un évènement spécifique.
     * `Google Cloud Functions` est `Serverless` tout comme `Google Cloud Functions`
 
-
 ## ***Composants de stockage de la plateforme Google Cloud (GCP)***
 
 Certaines applications ou services ont besoin de stocker et accéder aux données stockées de manière ultra-rapide, tandis que d'autres on besoin de stocker de gros volumes de données en tolérant des latences dans le traitement.
@@ -178,6 +177,7 @@ GCP met à disposition un ensemble de ressources et services de stockage dans le
         * `Régional`
             * les données de vos `Buckets` sont stockée dans une seule région (par exemple `Londres`)
             * les temps d'accès sont optimisés pour les utilisateurs ou services déployés dans la même région
+            * dans le cas d'une panne dans une région, les objets stockés dans des `Buckets` de cette région ne sont plus accessibles le temps de la panne.
         * `Bi-Régional`
             * Les données de vos `Buckets` sont redondés dans deux régions (Par exemple Finlande et des Pays-Bas)
             * Les performances d'accès ssuivent les même règles que le stockage régional
@@ -187,17 +187,98 @@ GCP met à disposition un ensemble de ressources et services de stockage dans le
             * Les données de vos `Buckets` sont géo-redondés dans toutes les régions du secteur choisi
             * À utiliser lorsqu'on souhaite atteindre des utilisateurs qui sont en dehors du réseau Google, réparties dans plusieurs régions ou lorsqu'on veut profiter d'un très grand niveau de redondance
     * Il es fortement recommandé de stocker ses données dans des emplacements qui regroupent la grande majorité de nos utilisateurs.
-
+    * Le stockage multirégional diminue la latence d'accès aux objets stockés du fait que les application qui les exloitent peuvent aaccéder aux instances qui sont le plus proche d'elles.
 
 2. `Google Persistent Disk`
+
+    * `Google Persistent Disk` est Service de stockage Block proposé par GCP
+    * `Google Persistent Disk` propose des disque exclusivement rattachés à des VMs ou au moteur `Kubernetes`
+    * Les disque `Google Persistent Disk` stockent sur des supports SSD, pour un maximum de performance (faible latence comparée à HDD)
+    * Les disques `Google Persistent Disk` supportent des lectures multiples sans dégradation de performances, du coup, plusieurs instances de VMs ou de conteneurs peuvent lire en parallèle sur le même disque persistant tout en gardant des performances de lecture élevées.
+    * La taille des disques persistants peut aller jusqu'à 64TB
+
 3. `Google Cloud Storage for Firebase`
+
+    * `Google Cloud Storage for Firebase` est un ensemble d'API, construit au-dessus de `Google Cloud Storage`, permettant aux développeurs mobile de pouvoir stocker des fichiers (photos, videos, son, etc.) de façon sécurisée.
+    * `Google Cloud Storage for Firebase` est conçu pour supporter des transmission de données sécurisées et propose aussi un mécanisme de recovery permettant de supporter même des réseaux instables.
+    * Une fois qu'un fichier est stocké, on peu y accéder via la ligne de commande `Cloud Storage` ou via le SDK mis à disposition des développeurs.
+    * À noter que `Google Firebase` est une plateforme de développement et de déploement d'applications back-end pour le mobile. Cette plateforme fournit aux applications un ensemble de service répartis en deux catégories :
+        * Les outils de développement et de test
+            * Authentification et Authorisation
+            * Base de données RealTimes (NoSQL)
+            * Monitoring applicatif
+            * La messagerie (Firebase Cloud Messaging [EDA])
+        * Les outils de mareting
+
 4. `Google Cloud Filestore`
+
+    * `Google Cloud Filestore` propose un système de fichiers partagé qui peut être utilisé par `Cloud Engine` (via l'installation de client NFS et la commande `mount`) et `Kubernetes Engine` (via la création de volume persistent avec un driver nfs).
+    * Contrairement aux `Persistent Disk`, les instances `Filestore` ne sont pas associées comme disques internes lors de la création de VM.
+    * `Google Cloud Filestore` implémente le protocole NFS (Network File System) et permet donc aux administrateurs de monter des systèmes de fichier partagés sur des serveurs virtuels.
+    * `Google Cloud Filestore` Supporte un grand nombre d'IOPS (Input-output Operation Per Second) ainsi qu'une capacité variable qui peut être configurée par l'administrateur.
+    * `Google Cloud Filestore`
 
 ### ***Base de données (Databases)***
 
+GCP propose plusieurs types de services base de données. Certaines sont relationnelles, d'autres NoSQL. Certaines sont Serverless et d'autre nécessitent que l'utilisateur manipule des VM ou des clusters. Certaines encore fournissent le support Transactionnel et d'autres non.
+
 1. `Google Cloud SQL`
+
+    * `Google Cloud SQL` fournit un ervice de base de données relationnel
+    * `Google Cloud SQL` permet de créér des base de données `MySQL` et `PostgreSQL`
+    * `Google Cloud SQL` est disponible en plusieurs configurations parmis lesquelles les configurations
+        * ***`MySQL première génération`***, qui propose les caractéristiques suivantes
+            * ***`MySQL 5.5`*** ou ***`MySQL 5.6`***
+            * `16GB RAM` Maximum
+            * `500GB` Max
+            * Stockage non ajustable (aucun moyen automatiqued'augmenter la capacité de stockage)
+        * ***`MySQL deuxième génération`***, qui propose les caractéristiques suivantes
+            * ***`MySQL 5.6`*** ou ***`MySQL 5.7`***
+            * `416GB RAM` Maximum
+            * `10TB` Max
+            * Stockage ajustable automatiquement (Il est possible de rajouter du stockage)
+        * ***`PostgreSQL`***, qui propose les caractéristiques suivantes
+            * ***`PostgreSQL 9.6`***
+            * `64 CPU` Maximum
+            * `416GB RAM` Maximum
+            * `10TB` Max
+            * Stockage ajustable automatiquement (Il est possible de rajouter du stockage)
+            * Support de `PostGIS` pour les informations géographiques
+            * Support de `HTABLE` pour le stockage `Clé-Valeur`
+    * `Google Cloud SQL` supporte nativement la réplication ainsi que le failover pour la haute disponibilité des bases de données
+
 2. `Google Cloud Bigtable`
+
+    * `Google Cloud Bigtable` propose un service de base de donnée NoSQL de type `Wide Column data model`
+    * ***Les base de données NoSQL de type `column wide store` sont à utiliser avec des applications qui manipulent un très grand nombre de colonnes (des centaines) couplés à un très grand nombre de lignes (des milliards)***
+    * `Google Cloud Bigtable` est une solution NoSQL comparable à d'autre base noSQL de type `Wide column store`
+        * Apache cassandra
+        * DynamoDB
+        * HBase
+        * Datastax (Luna, enterprise, Astra)
+    * `Google Cloud Bigtable` peut supporter des millions d'opérations pa secondes (comme tout BigData)
+    * `Google Cloud Bigtable` exécute des opération R/W avec une très faible latence (comme tout BigData)
+    * `Google Cloud Bigtable` a été mis en place pour des applications qui nécessitent
+        * Une très faible latence dans les opérations de lecture/écritures
+        * Un très grand nombre d'opérations par seconde
+    * `Google Cloud Bigtable` s'intègre avec un ensemble de services `GCP`
+        * `Google Cloud Storage`
+        * `Google Cloud Pub/Sub`
+        * `Google Cloud Dataproc`
+    * `Google Cloud Bigtable` supporte aussi `HBase API` qui est une API d'accès aux données venu de l'écosystème `Hadoop`
+    * `Google Cloud Bigtable` s'intègre aussi avec un grande variété d'outils Open Source pour
+        * Le traitement de données
+        * l'analyse de données (via des graphs)
+        * L'analyse de données de séries temporelles
+
 3. `Google Cloud Spanner`
+
+    * `Google Cloud Spanner` est un service de base de données relationnelle hautement disponible basé sur un système de gestion de base de donnée relationnel (SGBDR) du même nom [`Spanner`] développé par `Google` en 2017
+    * Le `SGBDR Spanner` se positionne comme un concurrent immédiat et très sérieux des SGBDR classique du fait qu'il apporte les avantages des deux mondes (SQL et NoSQL):
+        * Le support des transaction et de la consistence du monde relationnel
+        * Le support de la scalabilité horizontale native du monde NoSQL
+    * `Google Cloud Spanner` permet donc, grâce au `SGBDR Spanner` d'avoir une SLA de 99,999% de disponibilité
+
 4. `Google Cloud Datastore`
 5. `Google Cloud Memorystore`
 6. `Google Cloud Firestore`
