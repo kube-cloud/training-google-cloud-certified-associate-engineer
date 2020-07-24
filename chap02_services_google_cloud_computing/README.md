@@ -202,7 +202,7 @@ GCP met à disposition un ensemble de ressources et services de stockage dans le
     * `Google Cloud Storage for Firebase` est un ensemble d'API, construit au-dessus de `Google Cloud Storage`, permettant aux développeurs mobile de pouvoir stocker des fichiers (photos, videos, son, etc.) de façon sécurisée.
     * `Google Cloud Storage for Firebase` est conçu pour supporter des transmission de données sécurisées et propose aussi un mécanisme de recovery permettant de supporter même des réseaux instables.
     * Une fois qu'un fichier est stocké, on peu y accéder via la ligne de commande `Cloud Storage` ou via le SDK mis à disposition des développeurs.
-    * À noter que `Google Firebase` est une plateforme de développement et de déploement d'applications back-end pour le mobile. Cette plateforme fournit aux applications un ensemble de service répartis en deux catégories :
+    * À noter que `Google Firebase` est une plateforme de développement et de déploiement d'applications back-end pour le mobile. Cette plateforme fournit aux applications un ensemble de service répartis en deux catégories :
         * Les outils de développement et de test
             * Authentification et Authorisation
             * Base de données RealTimes (NoSQL)
@@ -256,7 +256,7 @@ GCP propose plusieurs types de services base de données. Certaines sont relatio
         * DynamoDB
         * HBase
         * Datastax (Luna, enterprise, Astra)
-    * `Google Cloud Bigtable` peut supporter des millions d'opérations pa secondes (comme tout BigData)
+    * `Google Cloud Bigtable` peut supporter des millions d'opérations par secondes (comme tout BigData)
     * `Google Cloud Bigtable` exécute des opération R/W avec une très faible latence (comme tout BigData)
     * `Google Cloud Bigtable` a été mis en place pour des applications qui nécessitent
         * Une très faible latence dans les opérations de lecture/écritures
@@ -273,23 +273,176 @@ GCP propose plusieurs types de services base de données. Certaines sont relatio
 
 3. `Google Cloud Spanner`
 
-    * `Google Cloud Spanner` est un service de base de données relationnelle hautement disponible basé sur un système de gestion de base de donnée relationnel (SGBDR) du même nom [`Spanner`] développé par `Google` en 2017
+    * `Google Cloud Spanner` est un service de base de données relationnelle hautement disponible basé sur un système de gestion de base de données relationnel (SGBDR) du même nom [`Spanner`] développé par `Google` en 2017
     * Le `SGBDR Spanner` se positionne comme un concurrent immédiat et très sérieux des SGBDR classique du fait qu'il apporte les avantages des deux mondes (SQL et NoSQL):
         * Le support des transaction et de la consistence du monde relationnel
         * Le support de la scalabilité horizontale native du monde NoSQL
     * `Google Cloud Spanner` permet donc, grâce au `SGBDR Spanner` d'avoir une SLA de 99,999% de disponibilité
 
 4. `Google Cloud Datastore`
+
+    * `Google Cloud Datastore` est un service de bse de données NoSQL de type Document (Comme MongoDB, Elasticsearch, etc..). Ce type de base de données exploitent les concepts de `Document` et de `Collection`, qui n'imposent pas un schéma se données stricte. En effet, un document peut avoir plus ou moins de champs relativement à un autre d'une même collection. Cependant, certains systèmes comme `Elasticsearch` découragent cette pratique au profit de schéma plus stricte, mais ce n'est qu'une recommandation.
+    * Les base de données `Google Cloud Datastore` sont accessible via une API REST depuis des application tourant sur `GCE`, `GKE`, `AppEngine` ou encore `Cloud Functions`
+    * Les base de données `Google Cloud Datastore` fournissent de très bonnes performances grâce au support natif de la scalabilité automatique basée sur la répartition de charges, ainsi que de l'organisation des données autour des structures distribuées comme les `Shards` et les partitions.
+    * En tant que service managé, `Google Cloud Datastore` prend en charge de manière transparente la réplication de données ainsi que leur sauvegarde et d'autres tâches d'administration
+    * Malgré que ce soit une base de données NoSQL, `Google Cloud Datastore` supporte les sontions de `Transactions`, `Index` et des requêtes type SQL.
+    * `Google Cloud Datatore` est recommandé pour des applications qui nécessitent un grande Scalabilité, de la structuration de données, et qui ne sont pas très regardants sur la consistence des données lors de la lecture. Par exemple des données comme :
+        * Les catalogues de produits
+        * Les profils utilisateurs
+        * L'historique de navigation utilisateurs
+        * Les données de monitoring
+
 5. `Google Cloud Memorystore`
+
+    * `Google Cloud memorystore` est un service de cache en mémoire basé sur `Redis`. Il offre la possibilité aux application de stocker en cache mémoire les données les plus fréquemment utilisées, permettant ainsi d'y accéder avec des temps de latence de l'ordre de la nanoseconde
+    * `Google Cloud memorystore` va permettre aux utilisateurs de qualibrer la taille du cache en laissant toute les autres tâches d'administration à GCP, qui s'occupera entre autre :
+        * de la haute disponibilité des données et du service (HA).
+        * de la reprise sur panne (failover)
+
 6. `Google Cloud Firestore`
+
+    * `Google Cloud Firestore` est un autre service de base de données NoSQL offert par google spécifiquement conçu comme back-end d'application Web/Mobiles réactives.
+    * La particularité de `Google Cloud Firestore` est la disponibilité d'une librairies cliente supportant :
+        * La gestion de données offline
+        * La synchronisation de données en temps réel ou différé
+        * La manipulation des données sur équipement mobile
+    * Même si on ne parle pas de `Cloud Firebase`, il faut juste rajouter que lui aussi supporte le mode `Datastore` permettant de supporter des application écrites pour `Google Cloud Datastore`
 
 ## ***Composants de networking de la plateforme Google Cloud (GCP)***
 
-1. Service réseau (Networking Services)
-2. Gestion des indentités (Identity Management)
-3. Outils de développement (Development Tools)
+GCP offre un ensemble de service réseau conçus pour permettre à un utilisateur de :
+
+* Configurer son réseau virtuel dans l'infrastructure réseau globale de GCP
+* Intégrer son datacenter on-premise avec son réseai virtuel GCP
+* Optimiser la livraison de contenus
+* Protégér les ressources cloud grâce au services de sécurité réseau
+
+1. Virtual Private Cloud (VPC)
+
+    * `Virtual private Cloud` permet à une entreprise de disposer d'un réseau virtuel privé, sur lequel il peut déployer ses applications en toute sécurité
+    * `VPC` permet de connecter des serveurs et services sur un réseau global couvrant la planète, et ceci sans passer par un réseau public. Le traffic entre les noeuds d'un réseau VPC peut donc se faire en toute sécurité quelque soit leur emplacement dans le monde.
+    * Les service bac-end de votre VPC peuvent accéder à tous les service offerts par GCP (Machine learning, IoT)
+    * Un réseau VPC peut être lié à un réseau On-Premise via le protocole IPSec
+    * Malgré que VPC soit un réseau global, les entreprises et clients peuvent aisément séparer les projets et la facturation afin de pouvoir gérer plusieurs groups et départements de manière individuelle dans la même organisation. Les règles de firewall peuvent être utilisés pour cloisonner les ressources VPC
+
+2. [`Cloud Load Balancing`](https://cloud.google.com/load-balancing?hl=fr)
+
+    * `Cloud Load Balancing` est un service fournissant un Load Balancer global permettant de disribuer la charge à travers tout votre réseau VPC
+    * Grâce à une addresse IP de multicast unique, `Cloud Load Balancing` va pouvoir distribuer la charge à l'interieur ou à travers toutes vos régions, il s'adaptera en fonction des serveurs tombés en pannes ou exposant des services dégradés et pourra autoscaler nos ressources afin de s'adapter aux besoins de charge
+    * `Cloud Load Balancing` supporte aussi la répartition de charge interne, du coup, aucune adresse IP n'a besoin d'être exposée sur internet pour être LoadBalancée
+    * `Cloud Load Balancing` propose du Load balancing
+        * `L4` : TCP, UDP
+        * `L7` : HTTP, HTTPS
+
+3. [`Cloud Armor`](https://cloud.google.com/armor?hl=fr)
+
+    * `Cloud Armor` est un service construit au dessus de `Cloud Load Balancing` permettant de protéger les service exposés contre des attaques de hackers (DoS, DDos, etc...)
+    * `Cloud Armor` propose notament
+        * Des restriction basées sur des adresses
+        * Des règles prédéfinies contre le XSS (Cross Site Scripting)
+        * Des règles de gestion des injections SQL
+        * La possibilité de configurer des règles de répartition L4 (niveau réseau) et L7 (Niveau application)
+        * La possibilité d'autoriser ou non des accès en fonction de la géolocalisation
+
+4. [`Cloud CDN (Content Delivery Networks)`](https://cloud.google.com/cdn/docs/overview?hl=fr)
+
+    * `Cloud CDN` est un service de Caches de données répliqué, managé et intégré à `Cloud Load Balancing`
+    * `Cloud CDN` est un service réseau de diffusion de contenu, permettant de rapprocher les contenus au plu près des utilisateurs afin d'améliorer les performances des sites web.
+    * `Cloud CDN` va donc mettre en cache un certain nombre de données afin de diminuer le temps d'accès à ces dernières
+    * `GCP` dispose d'au moins 90 endpoints `Cloud CDN` répartis sur son réseau mondial
+    * `Cloud CDN` fonctionne avec `Cloud Load Balancing` afin de s'assurer une meilleure configuration de la distribution des contenus auprès de vos utilisateurs (par exemple en fonction de leur positionnement géographique)
+    * `Cloud CDN` est particulièrement interessant pour la mise en cache de données statiques (images, songs, etc...) pour accélérer l'exécution des sites web utilisant un grand nombre de ressources statiques.
+
+![Fonctionnement de Cloud CDN](./cdn-response-flow.svg)
+
+5. [`Cloud Interconnect`](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview?hl=fr)
+
+    * `Cloud Interconnect` est un ensemble de services permettant de connecter votre réseau privé d'entreprise (sur site/On-Premise) à votre infrastructure réseau VPC chez GCP.
+    * `Google Interconnect` offre deux type de connexions : 
+        * `Interconnects` : via un réseau en co-hébergement ou via un partenaire qui est en cohébergement avec Google
+
+        #### ***Mode direct***
+        ![Fonctonnement de l'interconnexion 1](./direct-single-interconnect.svg)
+
+        #### ***Mode partenaire***
+        ![Fonctonnement de l'interconnexion 1](./direct-parthner-interconnect.svg)
+
+        * `Peering` : Via un ensemble de point d'appairage mis à dipsposition par Google (100 points dans 33 pays)
+
+6. `Cloud VPN`
+    
+    * `Cloud VPN` est un service d'interconnexion de votre réseau d'entreprise avec votre réseau VPC via une connexion VPN `Site to Site` ou `Client Serveur` supportée par le protocole `IPSec`.
+
+    ![Fonctonnement de l'interconnexion 1](./vpn-interconnect.svg)
+
+7. `Cloud Router`
+
+    * `Cloud router` est un service de gestion de routes dynamiques utilisé en combinaison avec `Cloud VPN` ou `Cloud Interconnect` afin de gérer finement les échanges inter-networks
+
+8. `Cloud DNS`
+
+    * `Cloud DNS` est un service de nommage hautement disponible et à faible latence. Il est conçu pour scaler automatiquement afin de supporter la résolution de millions de noms de domaines par client.
+
+9. `Identity and Access Management (IAM)`
+
+    * `IAM` est un service transeverse permettant au client de configurer de manière fine les contrôles d'accès aux ressources VPC.
+    * `IAM` manipule les concepts de `Users`, `Rôles` et `Groupes`
+    * Une identité est une abstraction d'un consommateur de service (utilisateur humain ou applicatif)
+    * Après qu'une identité ait été validée par un mécanisme de `Logging In` ou tout autre mécanisme, l'utilisateur authentifié peut alors effectuer les actions et opérations sur la base des privilèges qui ont été accordés à son identité.
+    * Il est aussi possible de grouper un ensemble de privilèges afin de les attribuer en block à une identité; pour ce faire, IAM utilise le concept de `rôle`, qui représente donc un ensemble de permissions pouvant être attibuées à une identité.
+
+
+10. `Outils de développement`
+
+    * `Cloud SDK` c'est un outils en ligne de commande permettant  au client de gérer les ressources GCP, ainsi que toute autre ressources que vous y déployer. Entre autres :
+        * VMs
+        * Cluster Kubernetes
+        * Networks
+        * Firewall
+        * Disques
+        * Base de données
+        * etc...
+        `Cloud SDK` dispose de client `Java`, `Python`, `Node.js`, `Ruby`, `Go`, `.Net`, `PHP` ainsi que de plugins pour les environnements de développement les plus utilisés et autres Framworks
+        * IntelliJ
+        * Eclipse
+        * Visual Studio
+        * PowerShell
+        * Maven
+        * Gradle
+
+    * `Google Cloud Container Registry` c'est un registre permettant de stocker des images docker prêtes pour des déploiement applicatifs
+    * `Google Cloud Source Repository` c'est le serveur de sources mis à disposition par Google pour la gestion du versionning applicatifs et atre tâches de gestion de code source
+    * `Google Cloud Build` c'est le service de build, offrant la possibilité de construire des pipeline d'intégration et de déploiement pour les applications clientes.
+
 
 ## ***Composants additionnels de la plateforme Google Cloud (GCP)***
 
+Les outils addistionnels sont destinés aux DevOps Professionnels, responsables de la mise en production, la scalabilité et la disponibiltés des services applicatifs
+
 1. Services de gestion (Management Services)
+
+    * `StackDriver` est un outils de collecte et de stockage de métriques, de logs et d'évènements permettant aux ingénieurs DevOps de monitorer et diagnostiquer applications et service en exploitation
+    * `Monitoring` est une extension de StackDriver permettant de collecter et stocker les métriques de performance provenant des ressources GCP ou (AWS) mais aussi provenant de l'instrumentation d'applications, parmis lesquelles les outils OpenSource comme `NGINX`, `Cassandra`, `Elasticsearch` etc...
+    * `Logging` est un service permettant de stocker, analyser et notifier sur la base des logs d'infrastructure GCP ou Amazon
+    * `Error Reporting` est un service permettant d'aggreger les erreurs de crash applicatifs afin de les visualiser de manière centralisé
+    * `Tracing` est un service distribué permettant de capturer les données de latence applicatif afin de pouvoir troubleshooter
+    * `Debugger` est un service permettant aux développeur d'inspecter l'état du code en exécution et de visualiser le contenu des variables dans les piles d'appels.
+    * `Profiler` est un service permettant de collecter le métriques d'utilisation CPU et mémoire pour une application donnée. Le service va utiliser l'échantillonage statistique afin de réduire l'impact des processus de profiling dans les performances applicative
+
 2. Services spécialisés (Specialized Services)
+
+    En plus des services IaaS et PaaS, GCP propose des services spécialisés pour la gestion des APIs, l'analyse de données et le Machine Learning
+
+    * `APIGee API Platform` est une plateforme permettant aux client de concevoir, déployer, monitorer et sécuriser les APIs d'accès à leurs services. `APIGee` va aussi permettre de mettre en place des politiques de limitation d'accès aux API (API Rate limiting) afin de pouvoir contrôler la charge sur ses API dans un but de performance, de SLA ou encore dans un but commercial. Les consommateurs d'API pourront aussi être authentifiés via les protocoles OAuth 2.0 ou SAML et l'échange de données pourra se faire avec ou sans encryption.
+
+    * `Data Analytics` regroupe un ensemble de service permettant d'analyser des données de Big Data en mode batch ou Stream. Les données à analyser peuvent provenir de :
+        * `BigQuery` (Différent de Big Table) qui est une base de données analytique suportant des petabytes de données
+        * `Cloud Dataflow` qui est un Framework permettant de définir des piipelines de traitement de données batch et stream 
+        * `Cloud Dataproc` qui est un service offrant des instances managées Hadoop et Spark
+        * `Cloud Dataprep` qui est un service permettant aux analystes d'explorer et préparer les données pour des analyses.
+
+    * `Artificial Intelligence and Machine Learning`
+        * `Cloud AutoML` est un outil permettant aux développeurs n'ayant pas de connaissance spécifiques sur le Machine Learnibg, de développer des application basées sur des modèles ML
+        * `Cloud Machine Learning Engine` est une plateforme permettant de construire et déployer des services ML scalables en production
+        * `Cloud Natural Language processisng` est un service permettant d'analyser les langages humains afin d'en extraire des informations depuis un texte
+        * `Cloud vision` est un service permettant d'analyser des images afin d'en extraire des métadonnées. Ces données permettront de filtrer des images etc...

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="357 286 675 318" width="675" height="318">
+  <defs>
+    <font-face font-family="Roboto" font-size="10" panose-1="2 0 0 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-73.24219" underline-thickness="48.828125" slope="0" x-height="528.3203" cap-height="710.9375" ascent="927.7344" descent="-244.14062" font-weight="400">
+      <font-face-src>
+        <font-face-name name="Roboto-Regular"/>
+      </font-face-src>
+    </font-face>
+    <clipPath id="inner_stroke_clip_path">
+      <path d="M 862.5669 346.65945 L 991.5669 346.65945 L 991.5669 402.65945 L 862.5669 402.65945 Z"/>
+    </clipPath>
+    <font-face font-family="Roboto" font-size="12" panose-1="2 0 0 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-73.24219" underline-thickness="48.828125" slope="0" x-height="528.3203" cap-height="710.9375" ascent="927.7344" descent="-244.14062" font-weight="400">
+      <font-face-src>
+        <font-face-name name="Roboto-Regular"/>
+      </font-face-src>
+    </font-face>
+    <clipPath id="inner_stroke_clip_path_2">
+      <path d="M 862.5669 498.3425 L 991.5669 498.3425 L 991.5669 554.3425 L 862.5669 554.3425 Z"/>
+    </clipPath>
+    <clipPath id="inner_stroke_clip_path_3">
+      <path d="M 523.5079 417.40945 L 651.0669 417.40945 L 651.0669 473.40945 L 523.5079 473.40945 Z"/>
+    </clipPath>
+    <clipPath id="inner_stroke_clip_path_4">
+      <path d="M 691.0669 417.40945 L 823.0669 417.40945 L 823.0669 473.40945 L 691.0669 473.40945 Z"/>
+    </clipPath>
+    <clipPath id="inner_stroke_clip_path_5">
+      <path d="M 376.22048 344.40945 L 482.7205 344.40945 L 482.7205 398.40945 L 376.22048 398.40945 Z"/>
+    </clipPath>
+    <clipPath id="inner_stroke_clip_path_6">
+      <path d="M 376.22048 418.2498 L 482.7205 418.2498 L 482.7205 472.2498 L 376.22048 472.2498 Z"/>
+    </clipPath>
+    <clipPath id="inner_stroke_clip_path_7">
+      <path d="M 376.22048 492.40945 L 482.7205 492.40945 L 482.7205 546.40945 L 376.22048 546.40945 Z"/>
+    </clipPath>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.9.4 
+    <dc:date>2020-01-08 23:41:53 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_4" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1" stroke-dasharray="none">
+    <title>cdn-response-flow</title>
+    <g id="Canvas_4: Layer 1">
+      <title>Layer 1</title>
+      <g id="Group_213">
+        <g id="Graphic_236">
+          <title>zone external - green</title>
+          <rect x="843.0669" y="303.15945" width="168.5" height="129.45559" fill="#e2f3ec"/>
+          <text transform="translate(853.0669 318.15945)" fill="#757575">
+            <tspan font-family="Roboto" font-size="10" font-weight="400" fill="#757575" x="0" y="9">Cloud Region</tspan>
+          </text>
+        </g>
+        <g id="Group_217">
+          <g id="Graphic_235">
+            <rect x="862.5669" y="346.65945" width="129" height="56" fill="white"/>
+            <rect x="862.5669" y="346.65945" width="129" height="56" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path)"/>
+            <text transform="translate(908.5669 367.65945)" fill="#212121">
+              <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">VM Instance</tspan>
+            </text>
+          </g>
+          <g id="Group_218">
+            <title>Product_Icons</title>
+            <g id="Graphic_234">
+              <rect x="887.5669" y="371.65945" width="6" height="6" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_233">
+              <rect x="889.5669" y="364.65945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_232">
+              <rect x="885.5669" y="364.65945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_231">
+              <rect x="893.5669" y="364.65945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_230">
+              <rect x="889.5669" y="380.65945" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_229">
+              <rect x="885.5669" y="380.65945" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_228">
+              <rect x="893.5669" y="380.65945" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_227">
+              <rect x="896.5669" y="373.65945" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_226">
+              <rect x="896.5669" y="377.65945" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_225">
+              <rect x="896.5669" y="369.65945" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_224">
+              <rect x="880.5669" y="373.65945" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_223">
+              <rect x="880.5669" y="377.65945" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_222">
+              <rect x="880.5669" y="369.65945" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_221">
+              <path d="M 883.5669 367.65945 L 883.5669 381.65945 L 897.5669 381.65945 L 897.5669 367.65945 Z M 895.5669 379.65945 L 885.5669 379.65945 L 885.5669 369.65945 L 895.5669 369.65945 Z" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_220">
+              <path d="M 887.5669 377.65945 L 893.5669 377.65945 L 890.5669 374.65945 Z" fill="#669df6"/>
+            </g>
+            <g id="Graphic_219">
+              <path d="M 890.5669 374.65945 L 893.5669 377.65945 L 893.5669 371.65945 Z" fill="#4285f4"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_214">
+          <title>Stacked Cards</title>
+          <g id="Graphic_216">
+            <title>Stroke-21</title>
+            <line x1="866.4121" y1="406.4527" x2="987.7217" y2="406.4527" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1.732"/>
+          </g>
+          <g id="Graphic_215">
+            <title>Stroke-22</title>
+            <line x1="871.0015" y1="411.1193" x2="983.1323" y2="411.1193" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1.601"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_237">
+        <g id="Graphic_260">
+          <title>zone external - green</title>
+          <rect x="843.0669" y="454.8425" width="168.5" height="129.13386" fill="#e2f3ec"/>
+          <text transform="translate(853.0669 469.8425)" fill="#757575">
+            <tspan font-family="Roboto" font-size="10" font-weight="400" fill="#757575" x="0" y="9">Cloud Region</tspan>
+          </text>
+        </g>
+        <g id="Group_241">
+          <g id="Graphic_259">
+            <rect x="862.5669" y="498.3425" width="129" height="56" fill="white"/>
+            <rect x="862.5669" y="498.3425" width="129" height="56" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_2)"/>
+            <text transform="translate(908.5669 519.3425)" fill="#212121">
+              <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">VM Instance</tspan>
+            </text>
+          </g>
+          <g id="Group_242">
+            <title>Product_Icons</title>
+            <g id="Graphic_258">
+              <rect x="887.5669" y="523.3425" width="6" height="6" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_257">
+              <rect x="889.5669" y="516.3425" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_256">
+              <rect x="885.5669" y="516.3425" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_255">
+              <rect x="893.5669" y="516.3425" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_254">
+              <rect x="889.5669" y="532.3425" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_253">
+              <rect x="885.5669" y="532.3425" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_252">
+              <rect x="893.5669" y="532.3425" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_251">
+              <rect x="896.5669" y="525.3425" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_250">
+              <rect x="896.5669" y="529.3425" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_249">
+              <rect x="896.5669" y="521.3425" width="4" height="2" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_248">
+              <rect x="880.5669" y="525.3425" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_247">
+              <rect x="880.5669" y="529.3425" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_246">
+              <rect x="880.5669" y="521.3425" width="4" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_245">
+              <path d="M 883.5669 519.3425 L 883.5669 533.3425 L 897.5669 533.3425 L 897.5669 519.3425 Z M 895.5669 531.3425 L 885.5669 531.3425 L 885.5669 521.3425 L 895.5669 521.3425 Z" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_244">
+              <path d="M 887.5669 529.3425 L 893.5669 529.3425 L 890.5669 526.3425 Z" fill="#669df6"/>
+            </g>
+            <g id="Graphic_243">
+              <path d="M 890.5669 526.3425 L 893.5669 529.3425 L 893.5669 523.3425 Z" fill="#4285f4"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_238">
+          <title>Stacked Cards</title>
+          <g id="Graphic_240">
+            <title>Stroke-21</title>
+            <line x1="866.4121" y1="558.13575" x2="987.7217" y2="558.13575" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1.732"/>
+          </g>
+          <g id="Graphic_239">
+            <title>Stroke-22</title>
+            <line x1="871.0015" y1="562.80235" x2="983.1323" y2="562.80235" stroke="white" stroke-linecap="butt" stroke-linejoin="round" stroke-width="1.601"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_16">
+        <g id="Graphic_29">
+          <rect x="523.5079" y="417.40945" width="127.55906" height="56" fill="white"/>
+          <rect x="523.5079" y="417.40945" width="127.55906" height="56" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_3)"/>
+          <text transform="translate(574.5079 438.40945)" fill="#212121">
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">Cloud CDN</tspan>
+          </text>
+        </g>
+        <g id="Group_17">
+          <title>Shape</title>
+          <g id="Graphic_28">
+            <title>Fill-1</title>
+            <path d="M 553.0079 431.40945 L 553.0079 434.7881 L 557.3852 439.2868 L 557.3852 435.9081 Z" fill="#669df6"/>
+          </g>
+          <g id="Graphic_27">
+            <title>Fill-1-Copy-2</title>
+            <path d="M 563.5079 445.40945 L 559.13054 449.7868 L 562.63054 449.7868 L 567.0079 445.40945 Z" fill="#669df6"/>
+          </g>
+          <g id="Graphic_26">
+            <title>Fill-1-Copy-3</title>
+            <path d="M 542.5079 445.40945 L 546.8852 449.7868 L 543.3852 449.7868 L 539.0079 445.40945 Z" fill="#669df6"/>
+          </g>
+          <g id="Graphic_25">
+            <title>Fill-1-Copy</title>
+            <path d="M 553.0079 459.40945 L 553.0079 456.0308 L 557.3852 451.5321 L 557.3852 454.9108 Z" fill="#669df6"/>
+          </g>
+          <g id="Graphic_24">
+            <title>Fill-2</title>
+            <path d="M 553.0079 431.40945 L 548.63054 435.9081 L 548.63054 439.2868 L 553.0079 434.7881 Z" fill="#aecbfa"/>
+          </g>
+          <g id="Graphic_23">
+            <title>Fill-2-Copy-2</title>
+            <path d="M 562.63054 441.0321 L 559.13054 441.0321 L 563.5079 445.40945 L 567.0079 445.40945 Z" fill="#aecbfa"/>
+          </g>
+          <g id="Graphic_22">
+            <title>Fill-2-Copy-3</title>
+            <path d="M 543.3852 441.0321 L 546.8852 441.0321 L 542.5079 445.40945 L 539.0079 445.40945 Z" fill="#aecbfa"/>
+          </g>
+          <g id="Graphic_21">
+            <title>Fill-2-Copy</title>
+            <path d="M 553.0079 459.40945 L 548.63054 454.9108 L 548.63054 451.5321 L 553.0079 456.0308 Z" fill="#aecbfa"/>
+          </g>
+          <g id="Graphic_20">
+            <title>Fill-9</title>
+            <rect x="548.63054" y="441.0321" width="8.754667" height="8.754667" fill="#aecbfa"/>
+          </g>
+          <g id="Graphic_19">
+            <title>Fill-10</title>
+            <path d="M 557.3852 441.0321 L 557.3852 449.7868 L 548.63054 449.7868 Z" fill="#669df6"/>
+          </g>
+          <g id="Graphic_18">
+            <path d="M 557.3852 441.0321 L 557.3852 449.7868 L 553.0079 445.40945 Z" fill="#4285f4"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_193">
+        <g id="Graphic_35">
+          <rect x="691.0669" y="417.40945" width="132" height="56" fill="white"/>
+          <rect x="691.0669" y="417.40945" width="132" height="56" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_4)"/>
+          <text transform="translate(736.0669 431.40945)" fill="#212121">
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">HTTP(S)</tspan>
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="25">Load Balancer</tspan>
+          </text>
+        </g>
+        <g id="Group_155">
+          <title>colored-32_load-balancing</title>
+          <g id="Graphic_170">
+            <title>Container</title>
+          </g>
+          <g id="Group_156">
+            <title>shape</title>
+            <g id="Graphic_169">
+              <rect x="723.5" y="445.40945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_168">
+              <rect x="716.5" y="445.40945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_167">
+              <rect x="709.5" y="445.40945" width="2" height="4" fill="#669df6"/>
+            </g>
+            <g id="Graphic_166">
+              <title>Fill-2</title>
+              <rect x="716.5" y="440.40945" width="2" height="4" fill="#4285f4"/>
+            </g>
+            <g id="Graphic_165">
+              <rect x="709.5" y="444.40945" width="16" height="2" fill="#669df6"/>
+            </g>
+            <g id="Graphic_164">
+              <rect x="711.5" y="435.40945" width="12" height="5" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_163">
+              <rect x="717.5" y="435.40945" width="6" height="5" fill="#669df6"/>
+            </g>
+            <g id="Graphic_162">
+              <rect x="721.5" y="449.40945" width="6" height="6" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_161">
+              <rect x="707.5" y="449.40945" width="6" height="6" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_160">
+              <rect x="710.5" y="449.40945" width="3" height="6" fill="#669df6"/>
+            </g>
+            <g id="Graphic_159">
+              <rect x="714.5" y="449.40945" width="6" height="6" fill="#aecbfa"/>
+            </g>
+            <g id="Graphic_158">
+              <rect x="717.5" y="449.40945" width="3" height="6" fill="#669df6"/>
+            </g>
+            <g id="Graphic_157">
+              <rect x="724.5" y="449.40945" width="3" height="6" fill="#669df6"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Group_204">
+        <g id="Graphic_206">
+          <rect x="376.22048" y="344.40945" width="106.5" height="54" fill="white"/>
+          <rect x="376.22048" y="344.40945" width="106.5" height="54" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_5)"/>
+          <text transform="translate(417.2205 364.40945)" fill="#212121">
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">End user</tspan>
+          </text>
+        </g>
+        <g id="Graphic_205">
+          <title>Shape_1_</title>
+          <path d="M 405.3542 369.8337 C 406.7042 369.8337 407.80876 368.72915 407.80876 367.37915 C 407.80876 366.02915 406.7042 364.9246 405.3542 364.9246 C 404.0042 364.9246 402.89967 366.02915 402.89967 367.37915 C 402.89967 368.72915 404.0042 369.8337 405.3542 369.8337 Z M 398.80876 369.8337 C 400.15876 369.8337 401.2633 368.72915 401.2633 367.37915 C 401.2633 366.02915 400.15876 364.9246 398.80876 364.9246 C 397.45876 364.9246 396.3542 366.02915 396.3542 367.37915 C 396.3542 368.72915 397.45876 369.8337 398.80876 369.8337 Z M 398.80876 371.47006 C 396.89967 371.47006 393.0815 372.4246 393.0815 374.3337 L 393.0815 376.37915 L 404.53603 376.37915 L 404.53603 374.3337 C 404.53603 372.4246 400.71785 371.47006 398.80876 371.47006 Z M 405.3542 371.47006 C 405.1224 371.47006 404.84967 371.4837 404.5633 371.51097 C 405.51785 372.1928 406.1724 373.12006 406.1724 374.3337 L 406.1724 376.37915 L 411.0815 376.37915 L 411.0815 374.3337 C 411.0815 372.4246 407.2633 371.47006 405.3542 371.47006 Z" fill="#616161"/>
+        </g>
+      </g>
+      <g id="Group_207">
+        <g id="Graphic_209">
+          <rect x="376.22048" y="418.2498" width="106.5" height="54" fill="white"/>
+          <rect x="376.22048" y="418.2498" width="106.5" height="54" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_6)"/>
+          <text transform="translate(417.2205 438.2498)" fill="#212121">
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">End user</tspan>
+          </text>
+        </g>
+        <g id="Graphic_208">
+          <title>Shape_1_</title>
+          <path d="M 405.3542 443.67403 C 406.7042 443.67403 407.80876 442.5695 407.80876 441.2195 C 407.80876 439.8695 406.7042 438.76494 405.3542 438.76494 C 404.0042 438.76494 402.89967 439.8695 402.89967 441.2195 C 402.89967 442.5695 404.0042 443.67403 405.3542 443.67403 Z M 398.80876 443.67403 C 400.15876 443.67403 401.2633 442.5695 401.2633 441.2195 C 401.2633 439.8695 400.15876 438.76494 398.80876 438.76494 C 397.45876 438.76494 396.3542 439.8695 396.3542 441.2195 C 396.3542 442.5695 397.45876 443.67403 398.80876 443.67403 Z M 398.80876 445.3104 C 396.89967 445.3104 393.0815 446.26494 393.0815 448.17403 L 393.0815 450.2195 L 404.53603 450.2195 L 404.53603 448.17403 C 404.53603 446.26494 400.71785 445.3104 398.80876 445.3104 Z M 405.3542 445.3104 C 405.1224 445.3104 404.84967 445.32403 404.5633 445.3513 C 405.51785 446.0331 406.1724 446.9604 406.1724 448.17403 L 406.1724 450.2195 L 411.0815 450.2195 L 411.0815 448.17403 C 411.0815 446.26494 407.2633 445.3104 405.3542 445.3104 Z" fill="#616161"/>
+        </g>
+      </g>
+      <g id="Group_210">
+        <g id="Graphic_212">
+          <rect x="376.22048" y="492.40945" width="106.5" height="54" fill="white"/>
+          <rect x="376.22048" y="492.40945" width="106.5" height="54" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#inner_stroke_clip_path_7)"/>
+          <text transform="translate(417.2205 512.40945)" fill="#212121">
+            <tspan font-family="Roboto" font-size="12" font-weight="400" fill="#212121" x="0" y="11">End user</tspan>
+          </text>
+        </g>
+        <g id="Graphic_211">
+          <title>Shape_1_</title>
+          <path d="M 405.3542 517.8337 C 406.7042 517.8337 407.80876 516.72915 407.80876 515.37915 C 407.80876 514.02915 406.7042 512.9246 405.3542 512.9246 C 404.0042 512.9246 402.89967 514.02915 402.89967 515.37915 C 402.89967 516.72915 404.0042 517.8337 405.3542 517.8337 Z M 398.80876 517.8337 C 400.15876 517.8337 401.2633 516.72915 401.2633 515.37915 C 401.2633 514.02915 400.15876 512.9246 398.80876 512.9246 C 397.45876 512.9246 396.3542 514.02915 396.3542 515.37915 C 396.3542 516.72915 397.45876 517.8337 398.80876 517.8337 Z M 398.80876 519.47006 C 396.89967 519.47006 393.0815 520.4246 393.0815 522.3337 L 393.0815 524.37915 L 404.53603 524.37915 L 404.53603 522.3337 C 404.53603 520.4246 400.71785 519.47006 398.80876 519.47006 Z M 405.3542 519.47006 C 405.1224 519.47006 404.84967 519.4837 404.5633 519.51097 C 405.51785 520.1928 406.1724 521.12006 406.1724 522.3337 L 406.1724 524.37915 L 411.0815 524.37915 L 411.0815 522.3337 C 411.0815 520.4246 407.2633 519.47006 405.3542 519.47006 Z" fill="#616161"/>
+        </g>
+      </g>
+      <g id="Graphic_261">
+        <path d="M 523.5079 461.5 L 503.9937 461.5 C 503.71757 461.5 503.4937 461.72386 503.4937 462 L 503.4937 520.5357 L 503.9937 520.0357 L 493.4079 520.0357 C 493.13174 520.0357 492.9079 520.2596 492.9079 520.5357 C 492.9079 520.81187 493.13174 521.0357 493.4079 521.0357 L 503.9937 521.0357 C 504.26985 521.0357 504.4937 520.81187 504.4937 520.5357 L 504.4937 462 L 503.9937 462.5 L 523.5079 462.5 C 523.784 462.5 524.0079 462.27615 524.0079 462 C 524.0079 461.72386 523.784 461.5 523.5079 461.5 Z M 485.4079 521.0357 L 493.4079 521.0357 L 493.4079 520.0357 L 485.4079 520.0357 Z M 489.76143 524.1822 L 485.76143 520.1822 L 485.76143 520.8893 L 489.76143 516.8893 L 489.0543 516.1822 L 485.0543 520.1822 L 484.70077 520.5357 L 485.0543 520.8893 L 489.0543 524.8893 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_262">
+        <path d="M 523.5079 444.90945 L 493.0142 444.90945 C 492.73803 444.90945 492.5142 445.1333 492.5142 445.40945 C 492.5142 445.6856 492.73803 445.90945 493.0142 445.90945 L 523.5079 445.90945 C 523.784 445.90945 524.0079 445.6856 524.0079 445.40945 C 524.0079 445.1333 523.784 444.90945 523.5079 444.90945 Z M 485.0142 445.90945 L 493.0142 445.90945 L 493.0142 444.90945 L 485.0142 444.90945 Z M 489.36773 449.0559 L 485.36773 445.0559 L 485.36773 445.763 L 489.36773 441.763 L 488.6606 441.0559 L 484.6606 445.0559 L 484.30707 445.40945 L 484.6606 445.763 L 488.6606 449.763 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_263">
+        <path d="M 523.1142 429.42126 L 503.6 429.42126 L 504.1 429.92126 L 504.1 371.38554 C 504.1 371.1094 503.87615 370.88554 503.6 370.88554 L 493.0142 370.88554 C 492.73803 370.88554 492.5142 371.1094 492.5142 371.38554 C 492.5142 371.6617 492.73803 371.88554 493.0142 371.88554 L 503.6 371.88554 L 503.1 371.38554 L 503.1 429.92126 C 503.1 430.1974 503.32387 430.42126 503.6 430.42126 L 523.1142 430.42126 C 523.3903 430.42126 523.6142 430.1974 523.6142 429.92126 C 523.6142 429.6451 523.3903 429.42126 523.1142 429.42126 Z M 485.0142 371.88554 L 493.0142 371.88554 L 493.0142 370.88554 L 485.0142 370.88554 Z M 489.36773 375.032 L 485.36773 371.032 L 485.36773 371.7391 L 489.36773 367.7391 L 488.6606 367.032 L 484.6606 371.032 L 484.30707 371.38554 L 484.6606 371.7391 L 488.6606 375.7391 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_264">
+        <path d="M 651.0669 462.5 L 681.1669 462.5 C 681.4431 462.5 681.6669 462.27615 681.6669 462 C 681.6669 461.72386 681.4431 461.5 681.1669 461.5 L 651.0669 461.5 C 650.7908 461.5 650.5669 461.72386 650.5669 462 C 650.5669 462.27615 650.7908 462.5 651.0669 462.5 Z M 689.1669 461.5 L 681.1669 461.5 L 681.1669 462.5 L 689.1669 462.5 Z M 684.8134 458.35356 L 688.8134 462.35356 L 688.8134 461.64645 L 684.8134 465.64645 L 685.5205 466.35356 L 689.5205 462.35356 L 689.874 462 L 689.5205 461.64645 L 685.5205 457.64645 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_265">
+        <path d="M 691.0669 428.42126 L 660.9669 428.42126 C 660.6908 428.42126 660.4669 428.6451 660.4669 428.92126 C 660.4669 429.1974 660.6908 429.42126 660.9669 429.42126 L 691.0669 429.42126 C 691.3431 429.42126 691.5669 429.1974 691.5669 428.92126 C 691.5669 428.6451 691.3431 428.42126 691.0669 428.42126 Z M 652.9669 429.42126 L 660.9669 429.42126 L 660.9669 428.42126 L 652.9669 428.42126 Z M 657.3205 432.5677 L 653.3205 428.5677 L 653.3205 429.2748 L 657.3205 425.2748 L 656.6134 424.5677 L 652.6134 428.5677 L 652.2598 428.92126 L 652.6134 429.2748 L 656.6134 433.2748 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_266">
+        <path d="M 862.5669 525.8425 L 756.8439 525.8425 L 757.3439 526.3425 L 757.3439 519.40945 L 757.5669 488.31304 L 757.5669 483.30945 C 757.5669 483.0333 757.3431 482.80945 757.0669 482.80945 C 756.7908 482.80945 756.5669 483.0333 756.5669 483.30945 L 756.5669 488.30945 L 756.3439 519.40587 L 756.3439 526.3425 C 756.3439 526.61866 756.5678 526.8425 756.8439 526.8425 L 862.5669 526.8425 C 862.8431 526.8425 863.0669 526.61866 863.0669 526.3425 C 863.0669 526.0664 862.8431 525.8425 862.5669 525.8425 Z M 756.5669 475.30945 L 756.5669 483.30945 L 757.5669 483.30945 L 757.5669 475.30945 Z M 753.4205 479.663 L 757.4205 475.663 L 756.7134 475.663 L 760.7134 479.663 L 761.4205 478.9559 L 757.4205 474.9559 L 757.0669 474.60235 L 756.7134 474.9559 L 752.7134 478.9559 Z" fill="#616161"/>
+      </g>
+      <g id="Graphic_267">
+        <path d="M 862.5669 374.15945 L 757.0669 374.15945 C 756.7908 374.15945 756.5669 374.3833 756.5669 374.65945 L 756.5669 407.50945 C 756.5669 407.7856 756.7908 408.00945 757.0669 408.00945 C 757.3431 408.00945 757.5669 407.7856 757.5669 407.50945 L 757.5669 374.65945 L 757.0669 375.15945 L 862.5669 375.15945 C 862.8431 375.15945 863.0669 374.9356 863.0669 374.65945 C 863.0669 374.3833 862.8431 374.15945 862.5669 374.15945 Z M 757.5669 415.50945 L 757.5669 407.50945 L 756.5669 407.50945 L 756.5669 415.50945 Z M 760.7134 411.1559 L 756.7134 415.1559 L 757.4205 415.1559 L 753.4205 411.1559 L 752.7134 411.863 L 756.7134 415.863 L 757.0669 416.21656 L 757.4205 415.863 L 761.4205 411.863 Z" fill="#616161"/>
+      </g>
+    </g>
+  </g>
+</svg>
