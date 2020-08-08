@@ -116,29 +116,112 @@ En plus de créer et gérer des hiérarchies de ressources et des ressources, vo
 * Une identité est le concept qui représente un utilisateur humain ou un service
   * Ex : `Jean-Jacques ÉTUNÈ NGI` est un Architecte Cloud (Utulusateur humain), son identité est `jetune@kube-cloud.com` chez GCP et il peut `créer`, `modifier` et `supprimer` des ressources.
 * GCP Propose 3 types de rôles
-  * Les `Roles Primitifs`, qui sont des rôles anciens qui existaient bien avant le service `IAM`. Il comprennent les rôles
+  * Les `Roles Primitifs`, qui sont des rôles anciens qui existaient bien avant le service `IAM`. Ces rôles ne sont pas recommandés du fait qu'ils sont coarse grained et accordent plusieurs permissions à un utilisateurs. Il comprennent les rôles
     * `Propriétaire (Owner)`
     * `lecteur (Viewer)`
     * `Éditeur (Editor)`
-  * Les `Rôles Prédéfinis`, permettent de gérer ssleions de manière beaucoup plus précise
-  * Les `Rôles Personalisés`
-
+  * Les `Rôles Prédéfinis`
+    * Contrairement aux rôles primitifs, ils permettent de gérer permissions de manière beaucoup plus précise. En effet ces rôles vont regrouper des permissions associées à des opérations précises sur une ressource.
+    * Dans le domaine de la sécurité, ces rôles permettent de mettre mettre en place le `Principe du moindre privilege (principle of least privilege)`, c'est à dire attribuer à un utilisateur uniquement les privilèges dont il a besoin pour effectuer ses tâches.
+    * Les `Rôles Préféfinis` sont liées aux ressources et services GCP comme par exemple
+      * `appengine.appAdmin`, qui permet à un utilisateur de lire, écrite ou modifier tous les paramètres d'une application AppEngine
+      * `appengine.ServiceAdmin`, qui permet à un utilusateur d'accéder en Lecture-Seule aux paramètre applicatifs, en Lecture-Ecriture aux paramètres de module et de version d'une Applucation AppEngine
+      * `appengine.apViewer`, qui permet à un utilisateur d'accéder en Lecture-Seule aux applications AppEngine
+    * On peut accéder aux rôles prédéfinis via le chemin `IAM and Admin` > `Roles`. Il faut toutefois s'assurer d'avoir les doits (`Administrateur des rôles de l'organisation`)
+  * Les `Rôles Personalisés`, permettent à un administrateur Cloud de définir et gérer ses propres regroupements de permissions, en fonction de la politique de son entreprise.
 
 2. Attribution de rôles à des identités (utilisateurs)
+
+Une fois que les rôles ont été définis, vous pouvez désormais les attribuer à des utilisateurs. À noter toutefois que les `Permission` ne peuvent être associées qu'aux `Rôles` et jamais aux `Utilisateurs` directement. Les rôles quant à eux sont associés aux utilisateurs ou aux groupes d'utilisateurs.
+
+Pour pouvoir attribuer les rôles, il suffit :
+
+* d'aller sur le menu `IAM and Admin` > `IAM`
+* Sélectionner l'organisation, le répertoire ou le projet pour lequel on souhaite configurer les rôles
+* Dans la fenêtre centrale, il est maintenant possible, pour ce projet/Dossier/Organisation, d'ajouter des utilisateurs en leur affectant des rôles.
+
 3. Allocation de ressources élastique (Elastic Resources Allocation)
 4. Services spécialisés (Specialized Services)
 
 ## Comptes de services (Account Services)
 
+1. Les comptes de services sont des comptes associés à des applications, leur permettant ainsi d'effectuer des actions dans le système en fonction des rôles attribués au compte utilisé.
+
+2. Les comptes de service vont permettre par exemple de donner des accès à une application sur un ou plusieurs services qui ne peuvent être accédés par un utilisateur humain.
+
+3. Les comptes de services sont considérés comme des identités lorsqu'ont leur affecte des rôles et comme des ressources lorsque nous donnons à un utilisateur les droits d'acc`s à ce compte
+
+4. Il existe deux type de compte de services
+    * Les compte managés par Google, crées automatiquement par Google sous certaines conditions.
+        * Lorsque l'API Compute Engine est activée, Google crée automatiquement un compte de service pour y accéder
+        * Lorsque l'API AppEngine est activée, Google crée aussi un compte de service afin d'y accéder
+    * Les comptes managés par l'utilisateur, qui peut en créer un maximum de 100 par projet
+
+5. Il est possible de permettre à un utilisateur d'utiliser un compte de service afin d'effectuer des actions. Pour cela il suffit d'ajouter cet utilisateur dans la liste des utilisateur ayant le rôle USER pour le compte de service cible
+
+6. Il est aussi possible de permettre à un utilisateur d'administrer un compte de service, de la même manière, il faudra le rajouter dans la liste des utilisateurs ayant le rôle ADMIN pour ce service
+
+7. Des comptes de services sont crées automatiquement lorsqu'une ressource GCP est créee. Par exemple lorsqu'une VM est créee, un compte de service est automatiquement créee afin de la gérer
+
+
 ## Facturation (Billing)
 
+Les ressources mises à disposition des clients par GCP sont pour la plupart payantes (VM, Clusters, Stockage, Services spécialisés, etc...). GCP fournit donc une API de facturation permettant de gérer tout les aspects liés à la facturation et au paiement des ressources utilisées.
+
 1. Compte de facturation
+
+    * Un compte de facturation stocke l'ensemble des informations nécessaires au paiement des factures liées aux ressources utilisées.
+    * Un compte de facturation peut être associé à un ou plusieurs projets
+    * Tout projet doit disposer d'un compte de facturation, même s'il utilise uniquement des ressources gratuites (au cas contraire, les API ne pourront pas être activé pour ces projets)
+    * Si vous êtes une petite entreprise, un seul compte suffit pour gérer les paiements de toutes vos ressources. Par contre, si vous êtes une entreprise avec plusieurs départements développés, pour une meilleure visibilité, il serait plus judicieux d'opter pour plusieurs compte de facturation chacun adressant un département. En gros, si vous avez des départements budgétairements indépendants, il pourrait être avisé d'avoir des comptes de facturation dédiés.
+    * Il existe deux type de comptes de facturation
+        * Les comptes de facturation Self Serve, qui fonctionnent en mode prélèvement direct sur une carte bancaire ou un compte
+        * Les comptes de facturation de type Invoice, qui fonctionnent en mode envoi de la facture au client qui initie lui même le paiement.
+    * 4 rôles peuvent être attachés à des identités en rapport avec les comptes de facturation
+        * Billing Account Creator : Qui peut créer un compte de facturation
+        * Billing Account Administrator : Qui peut gérer un compte de facturation sans pouvoir en créer
+        * Billing Account User : Qui peut rattacher un compte de facturation à un ou plusieurs projets
+        * Billing Account Viewer : Qui peut visualiser les transactions liées à un compte de facturation
+    * En terme de bonnes pratiques
+        * Les Administrateurs Cloud et utilisateurs ayant un profil financier devraient avoir un rôle de créateur de compte de facturation
+        * Les utilisateurs ayant la possibilité de créer des projets doivent avoir un rôle d'utilisateur de compte de facturation afin de pouvoir rattacher leur projets à des comptes de facturation
+        * Le rôle de Lecteur de compte de facturation pourra être réservé aux Auditeurs, etc...
+        * Les techniques ne devraient avoir aucun rôle dans la facturation
+
 2. Budgets et Alertes
+
+    * Le service de facturation de GCP dispose d'une option de définition de Budgets et d'alerte, permettant ainsi de controler son budget et d'être alerté en fonction des niveau de consommation de ce Budget.
+    * Le formulaire de creation de Budget permet de définir
+        * Le nom du budget
+        * Le compte de factuation à monitorer (à noter qu'un budget est rattaché à un compte de facturation et permettra de budgétiser toutes les dépenses des projets liés à ce compte de facturation)
+        * Le montant du budget
+        * Les différents pourcentages paliers déclenchant les alertes par email vers les Administrateurs et Utilsateurs de ce compte de facturation (une fois que le palier est dépassé).
+        * Il est aussi possible de configurer les alertes afin qu'elles soient diffusées vers une file Pub/Sub afin d'y répondre programmativement
+
 3. Exportation des données de facturation
+
+    * Les données de facturation peuvent être exportées pour des analyses futurs ou pour des raison de conformité
+    * Il est possible d'exporter les données de fcaturation vers une base de données BigQuery ou vers un fichier Cloud Storage (Bucket)
 
 ## Activation des APIs
 
+1. Google utilise les APIs afin de rendre ses services accessibles à des programmes informatiques.
+2. Lorsqu'on crée une VM ou un Bucket via le portail de self-services, des appels d'APIs sont effectués en arrière plan
+3. Chaque service offert par GCP est associé à une API
+4. Pour activer des APIs on peut
+    * Cliquer sur le menu `API et Service`
+    * Une fois sur la page, cliquer sur le lien `Activer des API et des Services`
+5. De même, lorsque l'on effectue une opération qui nécessite une API, il nous sera demandé si l'on veut l'activer
+6. Si vous cliquez sur le nom de l'API, vous serez redirigé vers une page de détails d'utilisation de l'API
+
 ## Provisionning de Workspace Stackdriver
+
+Lorsqu'on met en place une organisation ou des projets GCP, nous passons beaucoup de temps à créer des identités, attribuer des rôles, initialiser des comptes de facturation.
+
+Un autre aspect de ce qu'il y a à faire est de créer des espaces de travail StackDriver, encore appelés Comptes StackDriver.
+
+1. StackDriver est en fait une collection de services permettant de monitorer, journaliser et debbuguer des applications et des ressources.
+2. Pour créer un compte StackDriver, il faut sélectionner le menu ``
 
 ## Quelques questions d'examen
 
