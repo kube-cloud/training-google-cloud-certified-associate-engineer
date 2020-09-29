@@ -252,7 +252,7 @@ Le service `GKE (Google Kubernetes Engine)` permet de gérer ce type de cas.
         * `Java 11`
         * `Node.js (6, 8, 10, 12)`
         * `Python (3.7, 3.8)`
-    * `Clouf Functions` est une plateforme d'intermédiation entre services indépendants 
+    * `Cloud Functions` est une plateforme d'intermédiation entre services indépendants 
         * Par exemple, un service qui crée et enregistre un fichier dans un Bucket Google Storage et un autre service exécutant un traitement sur un fichier. Ces deux services peuvent être développés séparément et utiliser une fonction `Cloud Function` pour déclencher le traitement du fichier aussitot qu'il est enregistré
     * `GCP` va prendre en charge tout ce qui est nécessaire à l'exécution d'une fonction `Cloud Function`, car en effet, derrière le terme `Serverless` se cache des serveurs virtuels ou physiques qui exécutent notre code, mais l'utilisateur n'a pas à s'en préocuper
     * Les points clés à retenir sur `Cloud Functions`

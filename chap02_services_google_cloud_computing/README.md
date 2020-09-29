@@ -358,7 +358,7 @@ GCP offre un ensemble de service réseau conçus pour permettre à un utilisateu
 5. [`Cloud Interconnect`](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview?hl=fr)
 
     * `Cloud Interconnect` est un ensemble de services permettant de connecter votre réseau privé d'entreprise (sur site/On-Premise) à votre infrastructure réseau VPC chez GCP.
-    * `Google Interconnect` offre deux type de connexions : 
+    * `Google Interconnect` offre deux type de connexions :
         * `Interconnects` : via un réseau en co-hébergement ou via un partenaire qui est en cohébergement avec Google
 
         #### ***Mode direct***
