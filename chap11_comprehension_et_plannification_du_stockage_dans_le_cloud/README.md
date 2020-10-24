@@ -179,10 +179,185 @@ Pour rappel
     * Ce modèle ne propose pas la possibilité de lire ou écrire partiellement un fichier
     * Si vous souhaitez modifier un objet, vous le téléchargez, le modifier et l'uploadez ensuite.
     * Ce modèle supporte le versioning et la gestion du cycle de vie des objets stockés
+    * À utiliser lorsque vous souhaitez stocker de gros volumes de fichiers qui ne nécessitent pas d'accès partiel aux objets lorsqu'ils sont stockés dans le store. Vous pouvez par exemple l'utiliser :
+        * L'archivage
+        * Les donnéss de machine learning
+        * Les données IoT qui doivent être stockées mais plus activement analysés
 
 2. Relationnel : Services Cloud SQL, Cloud Spanner et BigQuery
+
+    * Les base de données relationnelles sont utilisées lorsqu'on a un besoin de consistence dans les données (Par exemple, deux utilisateurs qui lisent les données en même temps dans une table doivent recevoir exactement le même resultat. Ce n'est pas garanti dans le cadre de bases de données qui peuvent avoir des iconsistences dans les réplicas commes les NoSQL)
+    * `Cloud SQL` et `Cloud Spanner` supportent les transactions, c'est à dire des groupes d'opération exécutées de manière atomique et donc consistantes. Soit toutes les opérations de la transaction echouent, soit elles reussissent toutes.
+    * `Cloud SQL` est un service de base de données entièrement managé relationnelles permettant de provisionner des instances MySQL ou PostgresSQL
+    * `Cloud SQL` ne supporte pas nativement le scaling horizontal (ajout de nouvelles instances pour supporter la charge). Pour le faire, il faudra faire appel à `ProxySQL` qui est un Load Balancer pour MySQL : [`Plus de détails`](https://cloud.google.com/community/tutorials/horizontally-scale-mysql-database-backend-with-google-cloud-sql-and-proxysql).
+    * `Cloud SQL` supporte nativement le scaling vertical, c'est à dire l'ajout de ressources sur un serveur pour supporter la charge
+    * `Cloud SQL` est utilisé pour les applications web, ecommerce, applications transactionnelles, etc...
+
+    * `Cloud Spanner` est utilisé lorsque l'on de large volumes de données nécessitant de la consistence, mais aussi de la distribution pour optimiser les performances, tout en conservant la consistence et l'intégrité à travers toutes les instances.
+    * `Cloud Spanner` les applications de Sypply Chain et financières.
+
+    * `Big Query` sera utilisé pour tout ce qui touche aux Datawarehouse et à l'analyse business
+    * `Big Query` est consu pour stocker et accéder à de très gros volumes de données de l'ordre du Petabyte
+    * `Big Query` n'est pas du tout consu pour des applications transactionnelles (OLTP), mais décisionnelles
+
+    Vous pouvez créer une instance `Cloud SQL` en ligne de commande :
+    ```
+    gcloud sql instances create INSTANCE
+            [--activation-policy=ACTIVATION_POLICY] [--[no-]assign-ip] [--async]
+            [--authorized-networks=NETWORK,[NETWORK,...]]
+            [--availability-type=AVAILABILITY_TYPE] [--no-backup]
+            [--backup-location=BACKUP_LOCATION]
+            [--backup-start-time=BACKUP_START_TIME] [--collation=COLLATION]
+            [--cpu=CPU] [--database-flags=FLAG=VALUE,[FLAG=VALUE,...]]
+            [--database-version=DATABASE_VERSION] [--enable-bin-log]
+            [--enable-point-in-time-recovery]
+            [--failover-replica-name=FAILOVER_REPLICA_NAME]
+            [--maintenance-release-channel=MAINTENANCE_RELEASE_CHANNEL]
+            [--maintenance-window-day=MAINTENANCE_WINDOW_DAY]
+            [--maintenance-window-hour=MAINTENANCE_WINDOW_HOUR]
+            [--master-instance-name=MASTER_INSTANCE_NAME] [--memory=MEMORY]
+            [--replica-type=REPLICA_TYPE] [--replication=REPLICATION]
+            [--require-ssl] [--root-password=ROOT_PASSWORD]
+            [--storage-auto-increase] [--storage-size=STORAGE_SIZE]
+            [--storage-type=STORAGE_TYPE] [--tier=TIER, -t TIER]
+            [--disk-encryption-key=DISK_ENCRYPTION_KEY
+              : --disk-encryption-key-keyring=DISK_ENCRYPTION_KEY_KEYRING
+              --disk-encryption-key-location=DISK_ENCRYPTION_KEY_LOCATION
+              --disk-encryption-key-project=DISK_ENCRYPTION_KEY_PROJECT]
+            [--region=REGION; default="us-central" | --gce-zone=GCE_ZONE
+              | --zone=ZONE] [GCLOUD_WIDE_FLAG ...]
+    ```
+
+    Vous pouvez créer une instance `Cloud SQL - MySQL` via la console web de la manière suivante : 
+
+    * Rendez-vous sur le menu `Cloud SQL` et cliquez
+    * Dans la page choisissez la création d'une instance
+    * Dans la fenêtre de création, choisissez `MySQL`
+    * Dans la page de configuration MySQL
+        * Saisissez le nom de l'instance
+        * Saisissez le mo de passe racine (ou cliquez sur la case `Aucun mot de passe`)
+        * Choisissez la région et la zone d'hébergement de votre service
+        * Choisissez la version de MySQL que vous souhaitez
+    * Dans la section `Options de Configuration` vous pourrez définir
+        * `La Connectivité`, permet de préciser comment vous accèderez à votre instance `Cloud SQL`.
+            * `Adresse IP Publique`, pour des accès depuis internet. Vous devez préciser la plage d'adresse source autorisée à accéder à votre instance
+                * Par exemple, si vous souhaitez accéder via un client MySQL clqssique depuis votre laptop, il suffira de trouver l'adresse IP avec laquelle votre lapotop attaquera l'instance `Cloud SQL` ([`What is my IP`](http://ipv4.whatismyv6.com/)) et rajouter cette adresse comme autorisée à accéder à votre instance
+                * Vous pouvez aussi utiliser la commande `gcloud sql connect --project <project_id> <msql_instance> -u <user> -p` pour accéder à votre instance. Cette commande va automatiquement créer une règle permettant autorisant l'accès de l'adresse IP finale du périphérique de votre équipement et ensuite lancera le client mysql (que vous pourrez lancer manuellement).
+            * `Adresse IP Privée`, pour un accès interne (non publique) à votre instance
+        * `Le Type de machine et de stockage` conditionnant :
+            * CPU
+            * RAM
+            * Disque
+        * `Le plan de sauvegarde et de disponibilité`, permettant d'activer :
+            * L'automatisation des sauvegardes, en précisant l'intervalle de sauvegarde souhaité, ainsi que l'emplacement de stockage des sauvegardes
+            * La récupération de données à la seconde prêt. Cette option entraine l'activation des journaux binaires et leur stockage sur 7 jours
+            * Le choix du basculement automatique vers une autre instance dans une autre région en cas de panne.
+        * `Les options de réglages MySQL`, il s'agit d'indicateur permettant d'affiner la configuration de l'instance
+            * `auto_increment_increment`
+            * `auto_increment_offset`
+            * `default_timezone`
+            * `innodb_*`
+            * etc...
+        * `Les Intervalle de maintenance souhaités`, permet de préciser
+            * Le jour et l'heure de la maintenance
+            * L'ordre d'application de la mise à jour de l'instance par rapport aux autres instances
+        * `Les Labels`
+
+
+    Vous pouvez créer une instance `Cloud Spanner` via la console web de la manière suivante : 
+
+    ![Cloud Spanner Instance Creation Form](./cloud-spanner-instance-creation-form.png)
+
+    Une fois l'instance créée, vous pouvez y créer une base de donnée
+
+    ![Cloud Spanner Database Creation Form](./cloud-spanner-instance-database-creation-form.png)
+
+    Une fois la base de données `Cloud Spanner` créée, vous pouvez y rajouter des tables
+
+    ![Cloud Spanner Table Creation Form](./cloud-spanner-instance-database-table-creation-form.png)
+
+    ## À noter le coût prohibitif de `Cloud Spanner`, une instance mono-régionale allant au minimum à 0.9$/H et une instance multi-régionale pouvant aller jusqu'à 3,3$/H
+
+    `Big Query` quant lui est un service analytique managé, fournissant stockage et requêtage de gros volumes, et ne sécessitant pas de configuration particulière comme dans le cas de `Cloud SQL` et `Cloud Spanner`. Pour utiliser `Big Query` il faut :
+    * Créer un `Dataset` permettant de définir le périmètre contenant les données, comme par exemple
+        * `gke_cluster_resource_consumption` qui est créé pour traquer les données de consommation des ressources d'un cluster GKE
+        * `gke_cluster_resource_usage` qui est créé pour traquer les données d'utilisation des ressources d'un cluster GKE
+        * `gcp_billing_export_*` que vous pouvez créer lors de l'exportation de vos données de facturation
+
+    Page principale `Big Query`
+
+    ![Big Query Main Page](./big-query-main-page.png)
+
+    Formulaire de création d'un `Dataset`
+
+    ![Big Query Dataset Creation Form](./big-query-dataset-creation-form.png)
+
+    * Une fois le Dataset créé, vous pouvez y charger des données et le requêter (chapitre 12)
+
 3. NoSQL : Services Datastore, Cloud Firestore et BigTable
-4. Services spécialisés (Specialized Services)
+
+GCP propose 3 type de service NoSQL
+
+* `Cloud Datastore`
+    * Base de données NoSQL de type `Document`
+    * `Document` ne veut pas dire que cette base de données stocke des fichiers excel, pdf ou autre (comme dans une GED), mais seulement que les données stockées sont organisée autour d'une structure appelée `Document`
+    * Un `Document` est un ensemble de paires clé-valeur (comme un JSON)
+    * Une instance de `Document` (ensemble de paires clé-valeur) est appelée `Entité` dans le jargon `Cloud Datastore`, ce qui correspondrait `une ligne dans une table de base de données relationnelle
+    * `Cloud Datastore` est un service de base de donnée NoSQL totalement managé. Les utilisateurs n'ont pas besoin d'instancier des serveurs ou d'installer de logiciel de base de données. `Cloud Datastore` organise les différents index et s'occupe du Scaling (Up/Down) en fonction de la demande.
+    * `Cloud Datastore` ne doit pas être utilisé pour des besoins analytique ou relationnels.
+    * `Cloud Datastore` doit être envosagé pour :
+        * Le support de transaction atomiques (ensemble d'opération qui réussissent ou échouent toutes)
+        * La haute disponibilité des opération de lecture et d'écriture
+        * La haute performance des requêtes (grâce au scaling et à la distribution de données autour d'index)
+    * `Cloud Datastore` assure une cohérence à terme des données requêtées (du fait de la réplication asynchrone). En effet, la cohérence à terme signifie que si aucune mise à jour n'est effectuée, toutes les requêtes en lecture finiront par retourner exactement les mêmes résultats après un certain temps. Un peu comme lors de la création d'un nom de domaine, ou lors de la mise à jour d'un enregistrement `AAAA` ou `CNAME`, l'ensemble des serveur de domaines se mettent à jour progressivement.
+
+    La Configuration de `Cloud Datastore` (tout comme celle de `Big Query`) est complètement managée et ne nécessite pas de configuration de noeuds. Une fois sur l'interface principale de `Cloud Datastore`, vous pouvez créer des entités (des entrées dans un index de la base de données NoSQL)
+
+    ![`Cloud Datastore Main Page`](./cloud-datastore-main-page.png)
+
+    Remplir le formulaire de création d'entité
+
+    * `Namespace (Espace de noms)`, qui permet de regrouper plusieurs catégories d'entités, comme un `Schema` regroupe les tables dans le modèle relationnel
+    * `Kind (Genre)`, qui représente un regroupement d'entités de la même catégorie comme une table dans le modèle relationnel, avec comme particularité que la structure des données de l'entité n'est pas une contrainte
+    * `ID (Identifiant)`, qui représente le nom de la colonne qui identifie une entité. Par défaut, cette colonne sera nommée `ID` et sera d'un type numérique auto généré.
+    * Des propriétés supplémentaires, dont les types de base sont choisi entre :
+        * `DateTime`
+        * `Integer`
+        * `String`
+        * `Text`
+        * `Boolean`
+        * `Array`
+        * `Float`
+        * etc...
+    * Une fois crée, vous pouvez ensuite alimenter et requêter les entités `Cloud Datastore`. On le fera au chapitre 12.
+
+    ![`Cloud Datastore Entity Creation Form`](./cloud-datastore-entity-creation-form.png)
+
+* `Cloud Firestore`
+
+    * Service de base de données NoSQL managé de type document (comme `Cloud Datastore`)
+    * En réalité `Cloud Firestore` est la nouvelle génération `Cloud Datastore`. Le service `Cloud Datastore` utilise désormais le Back-End `Cloud Firestore` tout en maintenant une rétro-compatibilité avec le modèle de donnée actuel `Cloud Datastore`
+    * `Cloud Firestore` apporte les fonctionnalité suivantes :
+        * La synchronisation de données en temps réel sur toutes les applications clientes via des Listeners
+        * La prise en charge du mode Offline (via la mise en cache), permettant d'apporter une certaine autonomie et tolérance des latences réseau.
+        * Support transactionnel
+        * Support de la réplication multi-régionale
+    * Il est important de noter que si un projet utilise déjà `Cloud Datastore` il ne pourra plus utiliser `Cloud Firestore`. Dans ce cas, il faudra créer un autre projet et aller sur le menu `Cloud Firestore`
+
+        * Tout comme `Cloud datastore`, `Cloud Firestore` est un service de base de données NoSQL entierement managé et ne nécessitant pas de configuration de noeuds.
+
+        * Sélectionnez le mode Fierestore que vous souhaitez (Soit mode natif, soit Mode Datastore)
+
+        ![`Cloud Firestore Select Mode Form`](./cloud-firestore-select-mode-form.png)
+
+        * Sélectionnez ensuite le lieu de stockage de vos données
+
+         ![`Cloud Firestore Select Storage Location`](./cloud-firestore-select-storage-location.png)
+
+        * Une fois l'instance créée, vous pouvez désormais y créer des collections, insérer des données et les requêter (Chapitre 12).
+
+* `Cloud Bigtable`
+
 
 ## Choix d'une solution de stockage : ce qu'il faut prendre en compte
 
