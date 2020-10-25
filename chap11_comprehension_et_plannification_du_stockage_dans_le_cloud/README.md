@@ -21,7 +21,7 @@ Pour rappel
 * Microseconde = 10E-6 seconde
 * Milliseconde = 10E-3 seconde
 
-1. Cache
+1. Cloud memorystore (Cache)
 
     * Entrepoôt de stockage de données en mémoire
     * Conçu pour fournir des accès très rapide (en moins d'une milliseconde) aux données
@@ -44,7 +44,7 @@ Pour rappel
             * Préciser des paramètres de configuration spécifiques à Redis (`activedefrag`, `memory-policy`, `ifu-decay-time`, `ifu-log-factor`, `notify-keyspace-events`)
             * Définissez le mécanisme réseau d'accès à vos instance `Redis`. En effet, GCP crée les instances `MemoryStore (Redis/Memcached)` sur un réseau VPC distinct et pour pouvoir y accéder depuis vos `VMs` ou depuis vos applications `EppEngine`, `Cloud Function` ou encore `Cloud Run`, il fqut définir un mécanisme d'accès appelé `Connexion d'accès aux srevices privés`. Simplement dit, il s'agit de la mise en relation du réseau de service `MemoryStore` et de celui des services consomateurs. (`À voir dans la partie Network plus tard`)
 
-2. Disque persistent
+2. Persistent Disk (Disque persistent)
 
     * Service GCP de stockage persistant de type BLOCK
     * Attachable aux instances de VM GCE et GKE comme disque de démarrage ou disque interne
@@ -77,7 +77,7 @@ Pour rappel
             * `Zonal` : Les Blocs de données du disques sont stockées sur plusieurs lecteurs physiques réparties dans une seule zone. Si cette zone devient indisponible pour une quelconque raison, le disque devient innaccessible.
             * `Regional` : Les blocs de données du disque sont stockées dans plusiers zones appartenant d'une région. Ce qui permet de supporter l'indisponibilité d'une ou plusieurs zones.
 
-3. Cloud Storage : Stockage Objet
+3. Cloud Storage (Stockage Objet)
 
     * Contrairement aux `Caches` qui permet de stocker en mémoire relativement peu de données avec un faible latence d'accès, le stockage Objet (`Cloud Storage`) a été conçu dans le but de stocker des terraoctets de fichier (jusqu'à 64TB par disque) en fournissant jusqu'à 100 IOPS en lecture et ecriture.
     * Le stockage objet `Cloud Storage` est la bonne option lorsque vous voulez stocker et partager des gros volume de données unitaires.
@@ -357,6 +357,34 @@ GCP propose 3 type de service NoSQL
         * Une fois l'instance créée, vous pouvez désormais y créer des collections, insérer des données et les requêter (Chapitre 12).
 
 * `Cloud Bigtable`
+
+    * `Cloud Bigtable` est un service de base de données NoSQL de type `Wide Column`
+    * `Wide Column` est un type de base de données NoSQL permettant de stocker des tables pouvant contenir un très grand nombre de colonnes. De plus, aucune ligne de la base de données n'a l'obligation d'utiliser toutes les colonnes de la table.
+    * `Cloud Bigtable` est conçu pour stocker des pétabytes de données
+    * `Cloud Bigtable` peut être utilisée pour le stockage de données IoT et de données analytiques
+    * `Cloud Bigtable` doit être utilisé pour des applications à gros volumes de données nécessitant une grande vitesse d'acquisition. Les données de séries temporelles, les données d'IoT ou les données financières tombent dans cette catégorie.
+
+    Afin d'exploiter `Cloud Bigtable`, vous devez :
+    * Vous rendre dans la fenêtre principale de `Cloud Bigtable` via le menu `Bigtable`
+    * Sur la fenêtre principale, créer une instance `Cloud Bigtable`
+
+    ![`Cloud Bigtable main page`](./cloud-bigtable-main-page.png)
+
+    * Renseignez le nom et l'identifiant d'instance
+
+    ![`Cloud Bigtable creation form 01`](./cloud-bigtable-creation-form-part-01.png)
+
+    * Sélectionnez le type de stockage d'instance
+
+    ![`Cloud Bigtable creation form 02`](./cloud-bigtable-creation-form-part-02.png)
+
+    * Sélectionnez le premier cluster
+
+    ![`Cloud Bigtable creation form 03`](./cloud-bigtable-creation-form-part-03.png)
+
+    * Le cluster étant créé vous pouvez commencer à l'exploiter (Chapitre 12)
+
+    ![`Cloud Bigtable creation form 04`](./cloud-bigtable-creation-form-part-04.png)
 
 
 ## Choix d'une solution de stockage : ce qu'il faut prendre en compte
