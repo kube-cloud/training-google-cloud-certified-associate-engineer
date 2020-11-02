@@ -197,7 +197,7 @@ Pour rappel
     * `Cloud Spanner` les applications de Sypply Chain et financières.
 
     * `Big Query` sera utilisé pour tout ce qui touche aux Datawarehouse et à l'analyse business
-    * `Big Query` est consu pour stocker et accéder à de très gros volumes de données de l'ordre du Petabyte
+    * `Big Query` est conçu pour stocker et accéder à de très gros volumes de données de l'ordre du Petabyte
     * `Big Query` n'est pas du tout consu pour des applications transactionnelles (OLTP), mais décisionnelles
 
     Vous pouvez créer une instance `Cloud SQL` en ligne de commande :

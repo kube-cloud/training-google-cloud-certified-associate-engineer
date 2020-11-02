@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kubecloud-gke-training",
+  "private_key_id": "076105652f51dc13d5a1331bd1913fd6d9a21501",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDmMWI1LN5WgmI7\nMaBYi+TCh8/Wyi2N6UmDIPko2MUaKOYYb5pE4mZ6PqMaMLyClNzErnnw266nRpCr\nMwLBFYFAz/ZNbH/mtgiu5fxkh8SGBnMoyJgwSdNUdTPuaowDqygR4MWG8JJLoMzT\n6ZeYe1M2SdT9/asNPSj+i3sytZgB03lnzHMCS9tVNc2jXBgre6nTv1A+xRChISUW\ne6FWE6P9stwX6UeLfFGn7NAn952goHyEpvEEw7Pig56Ty6J5z0wNTg1qFbgFmj3G\nAS40Crd6CgWPKN+slSiGU2slkB+hfVaDAq4+TWKXp+Vjk9NRsP0Gilre/XOUqX02\nl+NBq+URAgMBAAECggEASmM6C9oQjZ871EowuXyXs9+EpDIYr4vsdCIjMnZ+l3oR\nBWOHVGxfVnDIb23BdWdawnppsJKlaawNky18Xd4vszyhKRr/aBR6UN7Ehc40DWWn\nME5GlBA/aUMowYqP7Z2RaNmcq4Mxm5v+pRqPITj1Ro1sdZnUfYY+qad0bAov8aKC\n5ShG6sNCPYZrrDCH4/8NUGm8w0cDM13Uldhk6hRWLL2tZZOtWtq2w7L9BKN47VqD\ndOGfILzvvBd4RS6EdMxq9faIharcACNUr/IZuDBrC2jbD7OC2fY7404RHkoixszp\n3cLe1tuWZqpi2o5zsey2yw38LOIwnaxpOcOp8d0b4wKBgQD3D21TtJoHc3tOXfYu\n5ubtXumxaOR3Am4ye9ipNSgQfLvXulJAa8s0KECq77VVj+dLvgc/rPBy46mXKa1q\nRrp0SXM+pCCGeY73VPif1xHIpiPAAzT3cULSbdNGUiXHmFiYNX773HbIM7J/rG6p\nMcHmvAZij9NPHN5nAtavPA3eUwKBgQDuhbXnveQNWXSdl4HxEfhp87ZzOpIjjfHu\nboEpq6Rbtj/ZmieV+F0Uc70hzzqOgKy0yYk3KwPlLs0daZCIEkn3HCfZWokaX/lm\nRvuXC3Hto6DbtLGOlVmaVJnvF3EsM0j8hbOOlORG+FBZ6ZVlZf7aVrb3HsRYe6xT\nHbz89LlaiwKBgQCzn2O9F/FkuXFM6MO0FeyPaBJACiMQ45N64NAFNcCLPCTWE4D5\nlWWH5jweC2mra5SeXOqoQPQQk7UZUhPi0Ml/AmfngyyimH55FC4vCA7F8wTK9Yns\n3UvX8kFJPzB4jSrcfwhz1TYHGI8OhC9wk9yGBO4ferIHMtX/zvCHNwJeQQKBgE+V\nx7MyNeSKY5Gtmsq/7z4S9l6OPXKliwK+VlR8E9QSBE3r1KeCfjQzxfiA943Su017\nLVB+BseyjPfyYCo2x/0upNEuFy74tPN+XbXxOKtM/IAyU0g65vHKpq4TCUzxM7om\nNlotrdlMQyss+A8kMBvT8SqVVngbk80L0CIq2amvAoGAIl+19Y4Y08nnr+cokSrY\neVh9eXljes1It3W0F8fjBFw3zqkDkXsIMT5kXm4pcLpk765NNhrnGIKDrYvROKha\nUOkxCx5SkeYtGZNREnfGCiQW2KRodK3Ju33PbJ5aDB35nZBTE+zN/mFpTMOuuEF1\nA55OLJSjHyFEBPqpkdliFWw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "kubecloud-gke-training@appspot.gserviceaccount.com",
+  "client_id": "104097744651616145989",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kubecloud-gke-training%40appspot.gserviceaccount.com"
+}
