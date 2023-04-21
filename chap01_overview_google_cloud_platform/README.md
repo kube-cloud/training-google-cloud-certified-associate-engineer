@@ -1,6 +1,6 @@
 # Overview de la plateforme de service Google Cloud Platform
 
-Le but de ce chapitre est de présenter à l'apprenant l'ensemble des services disponibles sur la plateforme [`Google Cloud Platform`](https://cloud.google.com/certification/guides/cloud-engineer/), leur utilité, ainsi que quelques cas d'usage de ces services.
+Le but de ce chapitre est de présenter à l'apprenant l'ensemble des services disponibles sur la plateforme [`Google Cloud Platform`](https://console.cloud.google.com), leur utilité, ainsi que quelques cas d'usage de ces services. Le but étant entre autre de les préparer à une certification [`Google Cloud Engineer`](https://cloud.google.com/certification/guides/cloud-engineer)
 
 À noter que les clients des plateformes Cloud ([`Google Cloud`](https://cloud.google.com/), [`AWS`](https://aws.amazon.com), [`Microsoft Azure`](https://azure.microsoft.com), etc...) sont de deux types :
 
